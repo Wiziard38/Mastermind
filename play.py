@@ -81,10 +81,14 @@ for i in range(5):
 exit()
 
 
+##
+
 #  Faire jouer un humain contre codemaker0.py :
 import codemaker0
 play_human_against_codemaker(codemaker0)
 
+
+##
 
 # Et plus tard, vous pourrez faire jouer vos nouvelles version du codebreaker et codemaker :
 import codemaker1
