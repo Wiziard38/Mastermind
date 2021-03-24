@@ -13,3 +13,5 @@ def choices(e, n):
     disponible dans les versions plus anciennes de Python
     """
     return [random.choice(e) for i in range(n)]
+
+def evaluation():
