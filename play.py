@@ -70,6 +70,7 @@ def play_human_against_codebreaker(codebreaker):
             break
 
 
+##
 # Les lignes suivantes sont à modifier / supprimer selon ce qu'on veut faire, quelques exemples :
 
 # Faire jouer ensemble codemaker0.py et codebreaker0.py pour 5 parties :
