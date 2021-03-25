@@ -44,7 +44,7 @@ def evaluation(solution, attempt):
     for element in attempt:
         if element in dict.keys() and dict[element] != 0:
             white += 1
-            dict[element] -= 0
+            dict[element] -= 1
     return(red,white)
 
 
@@ -56,5 +56,6 @@ def test_evaluation():
     assert(evaluation("RVVR","RVRV")) == (2,2)
     assert(evaluation("RRVV","VVRR")) == (0,4)
     assert(evaluation("RVRV","VRVR")) == (0,4)
+    assert(evaluation("RVRN","NNOO")) == (0,1)
 
 test_evaluation()
