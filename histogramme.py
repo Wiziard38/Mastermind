@@ -1,7 +1,7 @@
 import common
 from random import random.randint
 
-# Ancien code pour tracer un histo
+
 def trace_histo(n):
     nbr_essais = []
     global LENGHT
@@ -15,6 +15,6 @@ def trace_histo(n):
                 
     
 
-plt.hist(np.array(days), bins=np.array(range(1,368)), weights=np.array(number))
+plt.hist(np.array(days), bins=np.array(range(1,10000)), weights=np.array(number))
 plt.title("fréquence des jours d'anniversaires") 
 plt.show()
