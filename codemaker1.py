@@ -12,7 +12,7 @@ def init():
     solution = ''.join(common.choices(common.COLORS, common.LENGTH))
     # Pour une version encore plus triviale, on pourrait aussi utiliser solution = ''.join([common.COLORS[0] for i in range(common.LENGTH)])
 
-def codemaker1(attempt):
+def codemaker(attempt):
     """
     Cette fonction corrige la combinaison proposée par le codebreaker
     (donnée en argument) en utilisant la fonction evaluation du fichier common

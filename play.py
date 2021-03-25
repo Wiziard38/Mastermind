@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-#import os
-#os.chdir("/Users/mathis/Desktop/Mastermind")
+import os
+os.chdir("/Users/mathis/Desktop/Mastermind")
 import common
 
 
@@ -94,6 +94,7 @@ play_human_against_codemaker(codemaker0)
 import codemaker1
 play_human_against_codemaker(codemaker1)
 
+##
 import codebreaker2
 import codemaker2
 play(codemaker2, codebreaker2)
