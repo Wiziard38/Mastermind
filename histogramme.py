@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def trace_histo(n): # methode 2
+def trace_histo(n):
     list = []
     p = len(common.COLORS)**common.LENGTH
     for i in range(n):
