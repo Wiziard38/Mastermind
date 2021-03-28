@@ -6,7 +6,7 @@ import sys
 import codebreaker0
 import codemaker0
 import play
-
+import common
 
 def recup_print():
     """ Fonction qui permet de récuperer du texte qui a été écrit dans la console 
@@ -39,14 +39,14 @@ def plot_histogram(n):
     for i in range(n):
         list.append(recup_print())
     # On trace l'histogramme :
-    plt.hist(list, range = (0,8000), bins = 160)
+    plt.hist(list, range = (0,20000), bins = 400)
     plt.title("Nombre d'essais de codebreaker0 pour un total de " +str(n)+ " parties") 
     plt.show()
 
 
-def trace_histo_exact(n): # methode exacte
+def plot_histogram_exact(n): # methode exacte
     p = len(common.COLORS)**common.LENGTH
     list2 = np.random.geometric(1/p, n)
-    plt.hist(list2, range = (0,8000), bins = 8000, color='yellow')
+    plt.hist(list2, range = (0,20000), bins = 400, color='red')
     plt.title("Nombres d'essais") 
     plt.show()
