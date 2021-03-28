@@ -1,4 +1,3 @@
-import random
 import matplotlib.pyplot as plt
 import numpy as np
 import io
@@ -6,7 +5,7 @@ import sys
 
 import codebreaker0
 import codemaker0
-from play import play
+import play
 
 
 def recup_print():
@@ -15,7 +14,7 @@ def recup_print():
     # rediriger stdout dans un buffer :
     sys.stdout = io.StringIO()
     # appel de la fonction qui remplira stdout (donc le buffer)
-    play(codemaker0,codebreaker0)
+    play.play(codemaker0,codebreaker0)
     # récupérer le contenu du buffer :
     s = sys.stdout.getvalue()    
     # fermer le buffer :
@@ -40,7 +39,7 @@ def plot_histogram(n):
     for i in range(n):
         list.append(recup_print())
     # On trace l'histogramme :
-    plt.hist(list, range = (0,8000), bins = 800)
+    plt.hist(list, range = (0,8000), bins = 160)
     plt.title("Nombre d'essais de codebreaker0 pour un total de " +str(n)+ " parties") 
     plt.show()
 
