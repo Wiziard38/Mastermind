@@ -21,6 +21,9 @@ def evaluation(solution, attempt):
     et du nombre de plots de la bonne couleur mais mals placés.
     """
     
+    if len(solution) != len(attempt): # On vérifie que les deux chaînes ont la même longueur
+        sys.exit("Erreur : les deux combinaisons n'ont pas la même longueur")
+    
     dict = {}
     """On va d'abord compter le nombre de rouges, les couleurs sont soit rouges,
     soit on les intègre dans un dictionnaire qui recense le nombre d'appartition
