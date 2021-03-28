@@ -50,5 +50,5 @@ def plot_histogram_exact(n):
     p = len(common.COLORS)**common.LENGTH # On définit la probabilité de trouver à chaque essais
     list = np.random.geometric(1/p,n)
     plt.hist(list, range = (0,20000), bins = 400, color='red')
-    plt.title("Nombres d'essais") 
+    plt.title("Nombre d'essais probables moyens pour un total de " +str(n)+ " parties") 
     plt.show()
