@@ -15,7 +15,7 @@ def choices(e, n):
     return [random.choice(e) for i in range(n)]
 
     
-def evaluation(solution, attempt):
+def evaluation(attempt, solution):
     """Fonction qui évalue un essai en fonction de la solution de référence.
     Renvoie un tuple composé du nombre de plots de la bonne couleur bien placés, 
     et du nombre de plots de la bonne couleur mais mals placés.
@@ -28,7 +28,7 @@ def evaluation(solution, attempt):
     """On va d'abord compter le nombre de rouges, les couleurs sont soit rouges,
     soit on les intègre dans un dictionnaire qui recense le nombre d'appartition
     de ces couleurs"""
-    red = 0 
+    red = 0  # Nombre de plots bien placés
     for i in range(len(solution)-1,-1,-1): # Parcours de la boucle en sens inverse
         if solution[i] == attempt[i]:
             red += 1
@@ -43,7 +43,7 @@ def evaluation(solution, attempt):
     
     """Ensuite on regarde le nomre de blancs, en étudiant les couleurs encore présentes
     dans la chaine attempt par rapport à notre dictionnaire qui associe à chaque couleurs le nombre d'apparition"""
-    white = 0 
+    white = 0 # Nombre de plots mal placés
     for element in attempt:
         if element in dict.keys() and dict[element] != 0: # Si la couleur est dans le dictionnaire (plus que 0 fois)
             white += 1
