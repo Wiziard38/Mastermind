@@ -29,11 +29,11 @@ def play(codemaker, codebreaker):
             print("Bravo ! Trouvé {} en {} essais".format(attempt, n_tries))
             break
 
-def recup_print():
+def recup_print(play(codemaker,codebreaker)):
     # rediriger stdout dans un buffer :
     sys.stdout = io.StringIO()
     # appel de la fonction qui remplira stdout (donc le buffer)
-    play(codemaker0, codebreaker0)
+    play(codemaker, codebreaker)
     # récupérer le contenu du buffer :
     s = sys.stdout.getvalue()    
     # fermer le buffer :
