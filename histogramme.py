@@ -22,6 +22,7 @@ def recup_print(play, codemaker, codebreaker):
     sys.stdout.close()    
     # rediriger stdout vers la sortie standart :
     sys.stdout = sys.__stdout__
+    
     # Maintenant on récupère la partie de l'affichage qui nous intéresse :
     s = s[-15:]
     nombre = ''
@@ -31,7 +32,7 @@ def recup_print(play, codemaker, codebreaker):
     return int(nombre)
 
 
-def histogram(n):
+def plot_histogram(n):
     """ Fonction qui trace un histogramme répertoriant le nombre d'essais nécessaires
     pour que codemaker0 arrive à réussir, sur n parties"""
     # On créé la liste du nombre d'essais pour les n parties : 
@@ -40,11 +41,11 @@ def histogram(n):
         list.append(recup_print(play, codemaker0, codebreaker0))
     # On trace l'histogramme :
     plt.hist(list, range = (0,8000), bins = 800)
-    plt.title("Nombres d'essais") 
+    plt.title("Nombre d'essais de codebreaker0 pour un total de " +str(n)+ " parties") 
     plt.show()
 
 
-def trace_histo2(n): # methode exacte
+def trace_histo_exact(n): # methode exacte
     p = len(common.COLORS)**common.LENGTH
     list2 = np.random.geometric(1/p, n)
     plt.hist(list2, range = (0,8000), bins = 8000, color='yellow')
