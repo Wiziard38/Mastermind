@@ -29,7 +29,7 @@ def evaluation(solution, attempt):
     for i in range(len(solution)-1,-1,-1): # Parcours de la boucle en sens inverse
         if solution[i] == attempt[i]:
             red += 1
-            # On modifie la chaîne de caractères attempt pour enlever le couleur qui a déjà été décrite comme rouge
+            # On modifie la chaîne de caractères attempt pour enlever le couleur qui a déjà été décrite comme bien placée
             attempt = attempt[:i] + attempt[i+1:]
         elif solution[i] in dict.keys(): 
             # Si la couleur est déjà dans le dictionnaire, on augmente le nombre de cette couleur de 1
@@ -39,12 +39,12 @@ def evaluation(solution, attempt):
             dict[solution[i]] = 1
     
     """Ensuite on regarde le nomre de blancs, en étudiant les couleurs encore présentes
-    dans la chaine attempt par rapport à notre dictionnaire"""
+    dans la chaine attempt par rapport à notre dictionnaire qui associe à chaque couleurs le nombre d'apparition"""
     white = 0 
     for element in attempt:
-        if element in dict.keys() and dict[element] != 0:
+        if element in dict.keys() and dict[element] != 0: # Si la couleur est dans le dictionnaire (plus que 0 fois)
             white += 1
-            dict[element] -= 1
+            dict[element] -= 1 # On dit que la couleur y est une fois de moins dans le disctionnaire
     return(red,white)
 
 
