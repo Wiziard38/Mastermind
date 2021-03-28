@@ -35,7 +35,6 @@ def histogram(n):
     list = []
     for i in range(n):
         list.append(recup_print(play, codemaker0, codebreaker0))
-    print(list)
     plt.hist(list, range = (0,8000), bins = 8000)
     plt.title("Nombres d'essais") 
     plt.show()
