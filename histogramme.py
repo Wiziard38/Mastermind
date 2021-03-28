@@ -3,7 +3,7 @@ import numpy as np
 import io
 import sys
 
-import codebreaker0
+import codebreaker1
 import codemaker0
 import play
 import common
@@ -14,7 +14,7 @@ def recup_print():
     # rediriger stdout dans un buffer :
     sys.stdout = io.StringIO()
     # appel de la fonction qui remplira stdout (donc le buffer)
-    play.play(codemaker0,codebreaker0)
+    play.play(codemaker0,codebreaker1)
     # récupérer le contenu du buffer :
     s = sys.stdout.getvalue()    
     # fermer le buffer :
