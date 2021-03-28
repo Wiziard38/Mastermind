@@ -9,13 +9,13 @@ import codemaker0
 from play import play
 
 
-def recup_print(play, codemaker, codebreaker):
+def recup_print():
     """ Fonction qui permet de récuperer du texte qui a été écrit dans la console 
-    python par une fonction donnée en argument"""
+    python par la fonction play appliquée à codebreaker0 et codemaker0"""
     # rediriger stdout dans un buffer :
     sys.stdout = io.StringIO()
     # appel de la fonction qui remplira stdout (donc le buffer)
-    play(codemaker,codebreaker)
+    play(codemaker0,codebreaker0)
     # récupérer le contenu du buffer :
     s = sys.stdout.getvalue()    
     # fermer le buffer :
@@ -38,7 +38,7 @@ def plot_histogram(n):
     # On créé la liste du nombre d'essais pour les n parties : 
     list = []
     for i in range(n):
-        list.append(recup_print(play, codemaker0, codebreaker0))
+        list.append(recup_print())
     # On trace l'histogramme :
     plt.hist(list, range = (0,8000), bins = 800)
     plt.title("Nombre d'essais de codebreaker0 pour un total de " +str(n)+ " parties") 
