@@ -52,7 +52,7 @@ def histogramme(n):
     list = []
     for i in range(n):
         list.append(recup_print())
-    plt.hist(list, range = (0,8000), bins = 8000, color='red')
+    plt.hist(list, range = (0,8000), bins = 8000)
     plt.title("Nombres d'essais") 
     plt.show()
 
