@@ -44,9 +44,11 @@ def plot_histogram(n):
     plt.show()
 
 
-def plot_histogram_exact(n): # methode exacte
-    p = len(common.COLORS)**common.LENGTH
-    list2 = np.random.geometric(1/p, n)
-    plt.hist(list2, range = (0,20000), bins = 400, color='red')
+def plot_histogram_exact(n):
+    """Fonction qui trace l'histogramme représentatif du nombre d'essais par parties
+    jouées (en terme de probabilités) """
+    p = len(common.COLORS)**common.LENGTH # On définit la probabilité de trouver à chaque essais
+    list = np.random.geometric(1/p,n)
+    plt.hist(list, range = (0,20000), bins = 400, color='red')
     plt.title("Nombres d'essais") 
     plt.show()
