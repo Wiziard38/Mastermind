@@ -1,4 +1,6 @@
 import common
+import numpy
+import matplotlib.pyplot as plt
 
 def init():
     global liste
@@ -12,10 +14,8 @@ def codebreaker(evaluation_p):
     elle joue au hasard.
     """
     global liste
-    liste.append(evaluation_p)
     while True:
         tmp = ''.join(common.choices(common.COLORS, common.LENGTH))
         if tmp not in liste:
+            liste.append(tmp)
             return tmp
-
-global liste
