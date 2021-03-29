@@ -74,11 +74,16 @@ def donner_possibles(attempt, eval):
     return possibles
 
 
-
 def maj_possibles(possibles, attempt, eval):
-    set = donner_possibles(attempt,eval)
-    possibles = set&possibles
-    
+    """ Fonction qui modifie l'ensemble des possibiltés accordément avec un nouvel
+    essai (une chaine attempt et l'évaluation associée """
+    tmp = donner_possibles(attempt,eval)
+    for element in possibles.copy():
+        if element not in tmp:
+            possibles.remove("RRVR") # On cherche à supprimer sirectement sur la variable 'possibles'
+    # Sans supprimer directement, on aurait pu simplement utiliser "possibles & donner_possibles(attempt,eval)"
+
+
 
 ## Fonctions de test
 
