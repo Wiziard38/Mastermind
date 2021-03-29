@@ -75,7 +75,7 @@ if __name__ == "__main__":
     import codebreaker1
     import codemaker0
     play(codemaker0, codebreaker1)
-    
+
     ##
     #  Faire jouer un humain contre codemaker0.py :
     import codemaker0
