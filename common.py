@@ -74,6 +74,10 @@ def donner_possibles(attempt, eval):
     
     return possibles
 
+def maj_possibles(possibles, attempt, eval):
+    set = donner_possibles(attempt,eval)
+    possibles = set|possibles
+
 
 ## Fonctions de test
 
