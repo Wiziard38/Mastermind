@@ -70,25 +70,23 @@ def play_human_against_codebreaker(codebreaker):
             break
 
 if __name__ == "__main__":
-    # Les lignes suivantes sont à modifier / supprimer selon ce qu'on veut faire, quelques exemples :
-    
-    # Faire jouer ensemble codemaker0.py et codebreaker0.py pour 5 parties :
-    import codebreaker0
+    None
+    ##
+    import codebreaker1
     import codemaker0
-    for i in range(1):
-        play(codemaker0, codebreaker0)
-    exit()
-    
-    
+    play(codemaker0, codebreaker1)
+
+    ##
     #  Faire jouer un humain contre codemaker0.py :
     import codemaker0
     play_human_against_codemaker(codemaker0)
     
-    
+    ##
     # Et plus tard, vous pourrez faire jouer vos nouvelles version du codebreaker et codemaker :
     import codemaker1
     play_human_against_codemaker(codemaker1)
     
+    ##
     import codebreaker2
     import codemaker2
     play(codemaker2, codebreaker2)
