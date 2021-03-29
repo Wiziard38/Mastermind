@@ -71,13 +71,14 @@ def donner_possibles(attempt, eval):
     for e in set1:
         if evaluation(str(e), attempt) == eval:
             possibles.add(e)
-    
     return possibles
+
+
 
 def maj_possibles(possibles, attempt, eval):
     set = donner_possibles(attempt,eval)
     possibles = set&possibles
-
+    
 
 ## Fonctions de test
 
@@ -102,3 +103,6 @@ def test_donner_possibles():
     assert len(donner_possibles("RROO", (1,1))) == len(donner_possibles("OORR", (1,1)))
 
 test_donner_possibles()
+
+def test_maj_possibles():
+    
