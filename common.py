@@ -84,7 +84,6 @@ def maj_possibles(possibles, attempt, eval):
     # Sans supprimer directement, on aurait pu simplement utiliser "possibles & donner_possibles(attempt,eval)"
 
 
-
 ## Fonctions de test
 
 def test_evaluation():
