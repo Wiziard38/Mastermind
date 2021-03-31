@@ -109,4 +109,5 @@ def test_donner_possibles():
 test_donner_possibles()
 
 def test_maj_possibles():
+    None
     
