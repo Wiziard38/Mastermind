@@ -82,6 +82,7 @@ def maj_possibles(possibles, attempt, eval):
         if element not in tmp:
             possibles.remove(element) # On cherche à supprimer sirectement sur la variable 'possibles'
     # Sans supprimer directement, on aurait pu simplement utiliser "possibles & donner_possibles(attempt,eval)"
+    
 
 
 ## Fonctions de test
