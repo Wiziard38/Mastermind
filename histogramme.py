@@ -37,31 +37,14 @@ def plot_histogram(n,codemaker,codebreaker):
     for i in range(n):
         list.append(recup_print(codemaker, codebreaker))
     # On trace l'histogramme :
-    plt.hist(list, range = (0,20000), bins = 400, density = True)
-    plt.title("Nombre d'essais de " + codebreaker.__name__ + " pour un total de " +str(n)+ " parties") 
-    plt.show()
-    
-    # Loi géomérique (courbe exacte) :
-    p = 1/(len(common.COLORS)**common.LENGTH) # On définit la probabilité de trouver à chaque essais
-    x = np.linspace(0,20000,20000)
-    def f(x):
-        return p*(1-p)**(x-1)
-    proba = f(x)
-    plt.plot(x, proba)
+    if str(codebreaker.__name__) == 'codebreaker0':
+        plt.hist(list, range = (0,20000), bins = 400, density = True, label=str(codebreaker.__name__))  
+    if str(codebreaker.__name__) == 'codebreaker1':
+        plt.hist(list, range = (0,5000), bins = 500, density = True, label=str(codebreaker.__name__)) 
+    if str(codebreaker.__name__) == 'codebreaker2':
+        plt.hist(list, range = (0,30), bins = 30, density = True, label=str(codebreaker.__name__)) 
 
-
-def plot_histogram_exact(n):
-    """Fonction qui trace l'histogramme représentatif du nombre d'essais par parties
-    jouées (en terme de probabilités) """
-    p = 1/(len(common.COLORS)**common.LENGTH) # On définit la probabilité de trouver à chaque essais
-    
-    # Loi géomérique (histogramme) :
-    list = np.random.geometric(p,n)
-    return plt.hist(list, range = (0,20000), bins = 400, color='red', density = True)
-    plt.title("Nombre d'essais probables moyens pour un total de " +str(n)+ " parties") 
-    
-
-def trace_proba_codebreaker0():
+def plot_proba_codebreaker0():
     """ Fonction qui permet de tracer de manière probabilistique le nombre d'essais
     nécessaires pour que codebreaker0 trouve le code"""
     p = 1/(len(common.COLORS)**common.LENGTH)
@@ -69,22 +52,25 @@ def trace_proba_codebreaker0():
     def f(x):
         return p*(1-p)**(x-1)
     proba = f(x)
-    return plt.plot(x, proba)
+    plt.plot(x, proba, label = "codebreaker0 théorique")
 
-def trace_proba_codebreaker1():
+def plot_proba_codebreaker1():
     """ Fonction qui permet de tracer de manière probabilistique le nombre d'essais
     nécessaires pour que codebreaker1 trouve le code"""
     p = 1/(len(common.COLORS)**common.LENGTH)
     x = np.linspace(0,4096,4096)
     proba = [p]*4096
-    return plt.plot(x,proba)
+    plt.plot(x, proba, label = "codebreaker1 théorique")
 
 if __name__ == "__main__":
-    None
-    ##
-    import codemaker0
+    import codemaker1
     import codebreaker0
     import codebreaker1
-    plot_histogram(100,codemaker0,codebreaker0)
-    plot_histogram(100,codemaker0,codebreaker1)
+    import codebreaker2
+    # plot_histogram(100,codemaker1,codebreaker0)
+    # plot_histogram(100,codemaker1,codebreaker1)
+    plot_histogram(100,codemaker1,codebreaker2)
+    # plot_proba_codebreaker0()
+    # plot_proba_codebreaker1()
+    plt.legend()
     plt.show()
