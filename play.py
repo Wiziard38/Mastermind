@@ -48,7 +48,7 @@ def play_human_against_codemaker(codemaker):
             print("Bravo ! Trouvé {} en {} essais".format(attempt, n_tries))
             break
 
-
+ 
 def play_human_against_codebreaker(codebreaker):
     """
     Fait jouer l'utilisateur humain (au clavier) dans le role du codemaker
@@ -71,11 +71,9 @@ def play_human_against_codebreaker(codebreaker):
             break
 
 if __name__ == "__main__":
-    None
-    ##
-    import codebreaker1
+    import codebreaker2
     import codemaker0
-    play(codemaker0, codebreaker1)
+    play(codemaker0, codebreaker2)
 
     ##
     #  Faire jouer un humain contre codemaker0.py :
