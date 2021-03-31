@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 os.chdir("/Users/mathis/Desktop/Mastermind")
+
 import common
 
 
