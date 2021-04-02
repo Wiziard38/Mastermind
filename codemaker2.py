@@ -25,7 +25,6 @@ def codemaker(attempt):
     if possibles == []:
         eval = common.evaluation(attempt, solution)
         possibles = common.donner_possibles(attempt,eval)
-        print(solution)
         return eval
     else:
         count = 0
@@ -41,6 +40,5 @@ def codemaker(attempt):
         solution = solution_modif
         eval = common.evaluation(attempt, solution)
         common.maj_possibles(possibles, attempt, eval)
-        print(solution)
         return eval
             
