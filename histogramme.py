@@ -84,4 +84,4 @@ if __name__ == "__main__":
     ##
     import codemaker0
     import codebreaker0
-    plot_histogram(1000,codemaker0,codebreaker0)
+    plot_histogram(100000,codemaker0,codebreaker0)
