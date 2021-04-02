@@ -40,7 +40,7 @@ def plot_histogram(n,codemaker,codebreaker):
     if str(codebreaker.__name__) == 'codebreaker0':
         plt.hist(list, range = (0,20000), bins = 400, density = True, label=str(codebreaker.__name__))  
     if str(codebreaker.__name__) == 'codebreaker1':
-        plt.hist(list, range = (0,5000), bins = 500, density = True, label=str(codebreaker.__name__)) 
+        plt.hist(list, range = (0,4500), bins = 90, density = True, label=str(codebreaker.__name__)) 
     if str(codebreaker.__name__) == 'codebreaker2':
         plt.hist(list, range = (0,30), bins = 30, density = True, label=str(codebreaker.__name__)) 
 
@@ -64,13 +64,15 @@ def plot_proba_codebreaker1():
 
 if __name__ == "__main__":
     import codemaker1
+    import codemaker2
     import codebreaker0
     import codebreaker1
     import codebreaker2
     # plot_histogram(100,codemaker1,codebreaker0)
-    # plot_histogram(100,codemaker1,codebreaker1)
-    plot_histogram(100,codemaker1,codebreaker2)
+    plot_histogram(1000,codemaker1,codebreaker1)
+    #plot_histogram(100,codemaker1,codebreaker2)
+    #plot_histogram(5,codemaker2,codebreaker2)
     # plot_proba_codebreaker0()
-    # plot_proba_codebreaker1()
+    plot_proba_codebreaker1()
     plt.legend()
     plt.show()
