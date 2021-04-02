@@ -80,8 +80,9 @@ def maj_possibles(possibles, attempt, eval):
     tmp = donner_possibles(attempt,eval)
     for element in possibles.copy():
         if element not in tmp:
-            possibles.remove("RRVR") # On cherche à supprimer sirectement sur la variable 'possibles'
+            possibles.remove(element) # On cherche à supprimer sirectement sur la variable 'possibles'
     # Sans supprimer directement, on aurait pu simplement utiliser "possibles & donner_possibles(attempt,eval)"
+    
 
 
 ## Fonctions de test
@@ -96,7 +97,7 @@ def test_evaluation():
     assert evaluation("RVRV","VRVR") == (0,4)
     assert evaluation("RVRN","NNOO") == (0,1)
 
-test_evaluation()
+#test_evaluation()
 
 def test_donner_possibles():
     assert len(donner_possibles("RRRR", (0,0))) == 7**4 # Plus que 7 couleurs possibles
@@ -106,7 +107,15 @@ def test_donner_possibles():
     assert len(donner_possibles("RRRR", (1,0))) == 4*7**3 # Même raisonnement
     assert len(donner_possibles("RROO", (1,1))) == len(donner_possibles("OORR", (1,1)))
 
-test_donner_possibles()
+#test_donner_possibles()
 
 def test_maj_possibles():
+    possibles = {'RRRV','RRVR','RVRR','VRRR'}
+    maj_possibles(possibles,'RRRV',(2,2)) 
+    assert possibles == {'RRVR','RVRR','VRRR'}
+    possibles = {'RRRV','RRRO','RRRG','RRRN','RRRM'}
+    maj_possibles(possibles,'NGOV',(0,0)) 
+    assert possibles == {'RRRM'}
+
+#test_maj_possibles()
     

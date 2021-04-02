@@ -1,6 +1,5 @@
 import common
 import numpy
-import matplotlib.pyplot as plt
 
 def init():
     global liste
