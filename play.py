@@ -72,8 +72,8 @@ def play_human_against_codebreaker(codebreaker):
 
 if __name__ == "__main__":
     import codebreaker2
-    import codemaker1
-    play(codemaker1, codebreaker2)
+    import codemaker2
+    play(codemaker2, codebreaker2)
 
     ##
     #  Faire jouer un humain contre codemaker0.py :
