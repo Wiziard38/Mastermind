@@ -3,7 +3,6 @@ import numpy as np
 import io
 import sys
 
-import play
 import common
 
 def recup_print(codemaker,codebreaker):
@@ -28,6 +27,23 @@ def recup_print(codemaker,codebreaker):
             nombre += str(e)
     return int(nombre)
 
+def play(codemaker, codebreaker):
+    """
+    Fonction principale de ce programme :
+    Fait jouer ensemble le codebreaker et le codemaker donnés en arguments
+    """
+    n_tries = 0
+    codebreaker.init()
+    codemaker.init()
+    evaluation_p = None
+    while True:
+        attempt = codebreaker.codebreaker(evaluation_p)
+        (red, white) = codemaker.codemaker(attempt)
+        n_tries += 1
+        evaluation_p = (red, white)
+        if red >= common.LENGTH:
+            return n_tries
+
 
 def plot_histogram(n,codemaker,codebreaker):
     """ Fonction qui trace un histogramme répertoriant le nombre d'essais nécessaires
@@ -35,7 +51,7 @@ def plot_histogram(n,codemaker,codebreaker):
     # On créé la liste du nombre d'essais pour les n parties : 
     list = []
     for i in range(n):
-        list.append(recup_print(codemaker, codebreaker))
+        list.append(play(codemaker, codebreaker))
     # On trace l'histogramme :
     if str(codebreaker.__name__) == 'codebreaker0':
         plt.hist(list, range = (0,20000), bins = 400, density = True, label=str(codebreaker.__name__))  
