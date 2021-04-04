@@ -28,7 +28,7 @@ def codemaker(attempt):
         return eval
     else:
         count = 0
-        solution_modit = solution
+        solution_modif = solution
         for solution_tmp in possibles:
             possibles_tmp = possibles.copy()
             eval_tmp = common.evaluation(attempt, solution_tmp)
