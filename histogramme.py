@@ -27,7 +27,7 @@ def recup_print(codemaker,codebreaker):
             nombre += str(e)
     return int(nombre)
 
-def play(codemaker, codebreaker):
+def play_2(codemaker, codebreaker):
     """
     Fonction principale de ce programme :
     Fait jouer ensemble le codebreaker et le codemaker donnés en arguments
@@ -51,7 +51,7 @@ def plot_histogram(n,codemaker,codebreaker):
     # On créé la liste du nombre d'essais pour les n parties : 
     list = []
     for i in range(n):
-        list.append(play(codemaker, codebreaker))
+        list.append(play_2(codemaker, codebreaker))
     # On trace l'histogramme :
     if str(codebreaker.__name__) == 'codebreaker0':
         plt.hist(list, range = (0,20000), bins = 400, density = True, label=str(codebreaker.__name__))  
