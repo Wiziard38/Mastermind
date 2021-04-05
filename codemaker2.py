@@ -50,7 +50,22 @@ def best_sol(attempt):
             count = nbr_possibles
             solution_modif = solution_tmp
     solution = solution_modif
-    
+
+
+def best_sol_ini(attempt):
+    global possibles
+    global solution
+    nb_different_colors = len(set(common.COLORS) - set(attempt))
+    if nb_different_colors >= 6:
+        # Il n'y a que deux couleurs différentes dans attempt
+        eval = (0,0)
+    else:
+        # Il y a au moins trois couleurs différentes dans attempt
+        eval = (0,1)
+    possibles = common.donner_possibles(attempt, eval)
+    solution = random.sample(possibles,1)[0]
+    return eval
+
     
 def codemaker(attempt):
     """
@@ -60,55 +75,17 @@ def codemaker(attempt):
     global solution
     global possibles
     if possibles == set():
-        # Variante pour un gain de temps considérable, normalement même gain en essais
-        # On prend une eval = (0,1), quasi toujours le meilleur
-        liste = []
-        for e in common.COLORS:
-            liste.append(e*common.LENGTH)
-        # Car (0,1) impossible pour 'RRRR'
-        if attempt not in liste:
-            possibles = common.donner_possibles(attempt, (0,1))
-            solution = random.sample(possibles,1)[0]
-            return (0,1)
-        else:
-            possibles = common.donner_possibles(attempt, (0,0))
-            solution = random.sample(possibles,1)[0]
-            return (0,0)
-    else:
-        best_sol(attempt)
-        eval = common.evaluation(attempt, solution)
-        common.maj_possibles(possibles, attempt, eval)
-        print(len(possibles))
-        print(solution)
-        return eval
-
-
-def codemaker_bis(attempt):
-    """
-    FONCTION BIS NON UTILISEE CAR TROP LENTE SUR LA PREMIERE ITERATION
-    """
-    global solution
-    global possibles
-    if possibles == set():
-        possibles = creer_possibles()
-        best_sol(attempt)
-        eval = common.evaluation(attempt, solution)
-        possibles = common.donner_possibles(attempt,eval)
-        print(len(possibles))
-        print(solution)
+        eval = best_sol_ini(attempt)
         return eval
     else:
         best_sol(attempt)
         eval = common.evaluation(attempt, solution)
         common.maj_possibles(possibles, attempt, eval)
-        print(len(possibles))
-        print(solution)
         return eval
-
 
 
 def test():
-    attempt = "VMNR"
+    attempt = "RRVV"
     print(attempt)
     global possibles
     global solution
