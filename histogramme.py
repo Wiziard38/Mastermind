@@ -42,7 +42,7 @@ def plot_histogram(n, codemaker, codebreaker):
     if str(codebreaker.__name__) == 'codebreaker1':
         plt.hist(list, range = (0,4500), bins = 90, density = True, label=str(codebreaker.__name__)) 
     if str(codebreaker.__name__) == 'codebreaker2':
-        plt.hist(list, range = (0,30), bins = 30, density = True, label=str(codebreaker.__name__)) 
+        plt.hist(list, range = (0,15), bins = 15, density = True, label=str(codebreaker.__name__)) 
 
 def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     """ Fonction qui trace un histogramme répertoriant la différence du nombre 
@@ -95,13 +95,13 @@ if __name__ == "__main__":
     import codebreaker0
     import codebreaker1
     import codebreaker2
-    # plot_histogram(100,codemaker1,codebreaker0)
+    #plot_histogram(100,codemaker1,codebreaker0)
     #plot_histogram(1000,codemaker1,codebreaker1)
     #plot_histogram(100,codemaker1,codebreaker2)
-    #plot_histogram(5,codemaker2,codebreaker2)
+    #plot_histogram(20,codemaker2,codebreaker2)
     #plot_proba_codebreaker0()
     #plot_proba_codebreaker1()
-    plot_difference_codebreakers(100, codemaker1, codebreaker0, codebreaker1)
+    #plot_difference_codebreakers(100, codemaker1, codebreaker0, codebreaker1)
     #plot_difference_codemakers(100, codemaker1, codemaker2, codebreaker1)
     plt.legend()
     plt.show()
