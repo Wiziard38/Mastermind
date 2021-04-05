@@ -51,8 +51,6 @@ def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     # On créé la liste de la différence du nombre d'essais pour les n parties : 
     list = []
     for i in range(n):
-        if i % 500 = 0:
-            print("..." + i + " ... \n")
         list.append(recup_print(codemaker, codebreaker_1) - recup_print(codemaker, codebreaker_2))
         
     # On trace l'histogramme :
@@ -103,7 +101,7 @@ if __name__ == "__main__":
     #plot_histogram(5,codemaker2,codebreaker2)
     #plot_proba_codebreaker0()
     #plot_proba_codebreaker1()
-    plot_difference_codebreakers(10000, codemaker1, codebreaker0, codebreaker1)
-    plot_difference_codebreakers(100, codemaker1, codemaker2, codebreaker1)
+    plot_difference_codebreakers(100, codemaker1, codebreaker0, codebreaker1)
+    #plot_difference_codemakers(100, codemaker1, codemaker2, codebreaker1)
     plt.legend()
     plt.show()
