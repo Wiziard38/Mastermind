@@ -16,31 +16,15 @@ def init():
     # Pour une version encore plus triviale, on pourrait aussi utiliser solution = ''.join([common.COLORS[0] for i in range(common.LENGTH)])
 
 
-def creer_possibles():
-    """ Fonction qui nous donne toutes les possibilités de chaîne de taille LENGTH 
-    parmis les couleurs COLORS. """
-    count = 0
-    set1 = set(common.COLORS)
-    while count < common.LENGTH-1:
-        set2 = set1.copy()
-        for e in set2:
-            for e2 in common.COLORS:
-                set1.add(e+e2)
-        count += 1
-        set1 = set1 - set2
-    return set1
-
-
-
 def best_sol(attempt):
+    global solution
+    global possibles    
     
     def nombre_possibles(possibles_tmp, attempt, solution_tmp):
         eval_tmp = common.evaluation(attempt, solution_tmp)
         common.maj_possibles(possibles_tmp, attempt, eval_tmp)
         return len(possibles_tmp)
     
-    global solution
-    global possibles
     count = 0
     solution_modif = solution
     for solution_tmp in possibles:
@@ -84,6 +68,8 @@ def codemaker(attempt):
         return eval
 
 
+## A supprimer apres
+
 def test():
     attempt = "RRVV"
     print(attempt)
@@ -101,3 +87,17 @@ def test():
     solution = random.sample(possibles,1)[0]
     print(len(possibles))
     print(solution)
+    
+def creer_possibles():
+    """ Fonction qui nous donne toutes les possibilités de chaîne de taille LENGTH 
+    parmis les couleurs COLORS. """
+    count = 0
+    set1 = set(common.COLORS)
+    while count < common.LENGTH-1:
+        set2 = set1.copy()
+        for e in set2:
+            for e2 in common.COLORS:
+                set1.add(e+e2)
+        count += 1
+        set1 = set1 - set2
+    return set1
