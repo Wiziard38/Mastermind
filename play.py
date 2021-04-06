@@ -105,7 +105,6 @@ def play_log(codemaker, codebreaker):
             break
 ##fin de la question 11
         
-        
 if __name__ == "__main__":
     None
     ##
