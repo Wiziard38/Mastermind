@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-import os
-#os.chdir("/Users/mathis/Desktop/Mastermind")
 
+import os
 import common
 
 
@@ -71,7 +70,7 @@ def play_human_against_codebreaker(codebreaker):
             break
 
 ##question 11: fonction play_log
-def play_log(codemaker, codebreaker):
+def play_log(codemaker, codebreaker, file):
     """
     Fonction principale de ce programme :
     Fait jouer ensemble le codebreaker et le codemaker donnés en arguments
@@ -80,7 +79,8 @@ def play_log(codemaker, codebreaker):
     #évaluations dans un fichier texte
     
     #on crée un fichier texte log, que l'on ouvre en écriture et lecture (w+)
-    log= open("log.txt","w+") 
+    path = os.getcwd()
+    log = open(path + "/logs/" + file + ".txt", "w+") 
     
     n_tries = 0
     codebreaker.init()
@@ -103,7 +103,8 @@ def play_log(codemaker, codebreaker):
         if red >= common.LENGTH:
             print("Bravo ! Trouvé {} en {} essais".format(attempt, n_tries))
             break
-##fin de la question 11
+            
+
         
 if __name__ == "__main__":
     None
@@ -126,3 +127,8 @@ if __name__ == "__main__":
     import codebreaker2
     import codemaker2
     play(codemaker2, codebreaker2)
+    
+    ##
+    import codebreaker2
+    import codemaker1
+    play_log(codemaker1,codebreaker2,"log1")
