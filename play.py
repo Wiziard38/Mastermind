@@ -86,24 +86,20 @@ def play_log(codemaker, codebreaker, file):
     codebreaker.init()
     codemaker.init()
     evaluation_p = None
-    print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
     while True:
         attempt = codebreaker.codebreaker(evaluation_p)
-        #on écrit l'attempt dans le log puis on passe à la ligne suivante avec \n
+        # on écrit l'attempt dans le log puis on passe à la ligne suivante avec \n
         log.write(attempt+"\n")
         
         (red, white) = codemaker.codemaker(attempt)
         #idem pour l'évaluation retournée par codemaker
         log.write(str(red)+','+str(white)+'\n')
         n_tries += 1
-        print("Essai {} : {} ({},{})".format(n_tries, attempt, red, white))
         
         evaluation_p = (red, white)
-        
         if red >= common.LENGTH:
-            print("Bravo ! Trouvé {} en {} essais".format(attempt, n_tries))
             break
-            
+    print("La partie a bien été enregistrée dans /logs/" +file+ " !")
 
         
 if __name__ == "__main__":
