@@ -9,28 +9,9 @@ def init():
    attempt = ''
 
 
-def creer_possibles():
-    """ Fonction qui nous donne toutes les possibilités de chaîne de taille LENGTH 
-    parmis les couleurs COLORS. """
-    count = 0
-    set1 = set(common.COLORS)
-    while count < common.LENGTH-1:
-        set2 = set1.copy()
-        for e in set2:
-            for e2 in common.COLORS:
-                set1.add(e+e2)
-        count += 1
-        set1 = set1 - set2
-    return set1
-
 def best_attempt():
     global possibles
     global attempt
-    
-    def nombre_possibles(possibles_tmp, attempt, solution_tmp):
-        eval_tmp = common.evaluation(attempt, solution_tmp)
-        common.maj_possibles(possibles_tmp, attempt, eval_tmp)
-        return len(possibles_tmp)
     
     count = len(possibles)
     attempt modif = attempt
@@ -38,7 +19,7 @@ def best_attempt():
     for solution_tmp in possibles:
         for attempt_tmp in possibles:
             possibles_tmp = possibles.copy()
-            nbr_possibles = nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp)
+            nbr_possibles = common.nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp)
             if nbr_possibles < count: 
                 # On cherche la combinaison qui donne le moins possible de possibles
                 count = nbr_possibles
@@ -68,7 +49,7 @@ def test():
     print(attempt)
     global possibles
     global solution
-    possibles = creer_possibles()
+    possibles = common.creer_possibles()
     best_sol(attempt)
     eval = common.evaluation(attempt, solution)
     possibles = common.donner_possibles(attempt,eval)
