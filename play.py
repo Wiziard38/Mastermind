@@ -70,6 +70,42 @@ def play_human_against_codebreaker(codebreaker):
             print("Le codebreaker a trouvé {} en {} essais".format(attempt, n_tries))
             break
 
+##question 11: fonction play_log
+def play_log(codemaker, codebreaker):
+    """
+    Fonction principale de ce programme :
+    Fait jouer ensemble le codebreaker et le codemaker donnés en arguments
+    """
+    #on reprend la fonction play, on veut ajouter les attempts et les
+    #évaluations dans un fichier texte
+    
+    #on crée un fichier texte log, que l'on ouvre en écriture et lecture (w+)
+    log= open("log.txt","w+") 
+    
+    n_tries = 0
+    codebreaker.init()
+    codemaker.init()
+    evaluation_p = None
+    print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
+    while True:
+        attempt = codebreaker.codebreaker(evaluation_p)
+        #on écrit l'attempt dans le log puis on passe à la ligne suivante avec \n
+        log.write(attempt+"\n")
+        
+        (red, white) = codemaker.codemaker(attempt)
+        #idem pour l'évaluation retournée par codemaker
+        log.write(str(red)+','+str(white)+'\n')
+        n_tries += 1
+        print("Essai {} : {} ({},{})".format(n_tries, attempt, red, white))
+        
+        evaluation_p = (red, white)
+        
+        if red >= common.LENGTH:
+            print("Bravo ! Trouvé {} en {} essais".format(attempt, n_tries))
+            break
+##fin de la question 11
+        
+        
 if __name__ == "__main__":
     import codebreaker2
     import codemaker2
