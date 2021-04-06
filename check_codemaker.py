@@ -17,6 +17,9 @@ def check_codemaker(file):
     (red,b,white,n)=tuple(log.readline())
     eval=(int(red),int(white))
     liste=common.donner_possibles(attempt.strip(),eval)
+    
+    
+    
     print(liste)
     print(attempt)
     print(eval)
