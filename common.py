@@ -4,7 +4,8 @@ import random
 import sys
 
 LENGTH = 4
-COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
+# COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
+COLORS = ['R', 'V', 'B', 'J', 'N']
 
 
 def choices(e, n):
@@ -91,8 +92,8 @@ def maj_possibles(possibles, attempt, eval):
 
 
 def nombre_possibles(possibles_tmp, attempt, solution_tmp):
-    eval_tmp = common.evaluation(attempt, solution_tmp)
-    common.maj_possibles(possibles_tmp, attempt, eval_tmp)
+    eval_tmp = evaluation(attempt, solution_tmp)
+    maj_possibles(possibles_tmp, attempt, eval_tmp)
     return len(possibles_tmp)
 
 
