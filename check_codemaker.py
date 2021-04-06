@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Apr  6 08:44:09 2021
 
-@author: ericg
-"""
 import os
 import common
 
