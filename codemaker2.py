@@ -19,17 +19,12 @@ def init():
 def best_sol(attempt):
     global solution
     global possibles    
-    
-    def nombre_possibles(possibles_tmp, attempt, solution_tmp):
-        eval_tmp = common.evaluation(attempt, solution_tmp)
-        common.maj_possibles(possibles_tmp, attempt, eval_tmp)
-        return len(possibles_tmp)
-    
+        
     count = 0
     solution_modif = solution
     for solution_tmp in possibles:
         possibles_tmp = possibles.copy()
-        nbr_possibles = nombre_possibles(possibles_tmp, attempt, solution_tmp)
+        nbr_possibles = common.nombre_possibles(possibles_tmp, attempt, solution_tmp)
         if nbr_possibles > count:
             count = nbr_possibles
             solution_modif = solution_tmp
