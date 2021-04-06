@@ -85,9 +85,9 @@ if __name__ == "__main__":
     import codebreaker1
     import codebreaker2
     # plot_histogram(100,codemaker1,codebreaker0)
-    #plot_histogram(1000,codemaker1,codebreaker1)
+    plot_histogram(1000,codemaker1,codebreaker1)
     #plot_histogram(100,codemaker1,codebreaker2)
-    plot_histogram(5,codemaker2,codebreaker2)
+    #plot_histogram(5,codemaker2,codebreaker2)
     # plot_proba_codebreaker0()
     plot_proba_codebreaker1()
     plt.legend()
