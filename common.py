@@ -51,25 +51,26 @@ def evaluation(attempt, solution):
     return(red,white)
 
 
+def creer_possibles():
+    """ Fonction qui nous donne toutes les possibilités de chaîne de taille LENGTH 
+    parmis les couleurs COLORS. """
+    count = 0
+    set1 = set(COLORS)
+    while count < LENGTH-1:
+        set2 = set1.copy()
+        for e in set2:
+            for e2 in COLORS:
+                set1.add(e+e2)
+        count += 1
+        set1 = set1 - set2
+    return set1
+
+
 def donner_possibles(attempt, eval):
     """ Fonction qui renvoie un set comprenant toutes les combinaisons possibles 
     après une evaluation """
     # On va d'abord créer un set qui comprend toutes les combinaisons possibles
-    def creer_possibles():
-        """ Fonction qui nous donne toutes les possibilités de chaîne de taille LENGTH 
-        parmis les couleurs COLORS. """
-        count = 0
-        set1 = set(COLORS)
-        while count < LENGTH-1:
-            set2 = set1.copy()
-            for e in set2:
-                for e2 in COLORS:
-                    set1.add(e+e2)
-            count += 1
-            set1 = set1 - set2
-        return set1
     possibles_ini = creer_possibles()
-    
     # Maintenant on sél´ectionne uniquement les éléments qui correspondent à l'évaluation
     # (pour cela on utilise la symétrie de l'évaluation entre l'essai et la solution)
     possibles = set()
@@ -87,6 +88,12 @@ def maj_possibles(possibles, attempt, eval):
         if element not in tmp:
             possibles.remove(element) # On cherche à supprimer sirectement sur la variable 'possibles'
     # Sans supprimer directement, on aurait pu simplement utiliser "possibles & donner_possibles(attempt,eval)"
+
+
+def nombre_possibles(possibles_tmp, attempt, solution_tmp):
+    eval_tmp = common.evaluation(attempt, solution_tmp)
+    common.maj_possibles(possibles_tmp, attempt, eval_tmp)
+    return len(possibles_tmp)
 
 
 ## Fonctions de test
