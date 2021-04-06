@@ -4,7 +4,7 @@ import random
 
 def init():
    global possibles
-   possibles = []
+   possibles = set()
    global attempt
    attempt = ''
 
@@ -15,7 +15,7 @@ def codebreaker(evaluation_p):
     if evaluation_p == None:
         attempt = ''.join(common.choices(common.COLORS, common.LENGTH))
         return attempt
-    elif possibles == []:
+    elif possibles == set():
         possibles = common.donner_possibles(attempt,evaluation_p)
         attempt = random.sample(possibles,1)[0]
         return attempt

@@ -107,19 +107,21 @@ def play_log(codemaker, codebreaker):
         
         
 if __name__ == "__main__":
+    None
+    ##
     import codebreaker2
-    import codemaker2
-    play(codemaker2, codebreaker2)
+    import codemaker1
+    play(codemaker1, codebreaker2)
 
     ##
     #  Faire jouer un humain contre codemaker0.py :
-    import codemaker0
-    play_human_against_codemaker(codemaker0)
+    import codemaker1
+    play_human_against_codemaker(codemaker1)
     
     ##
     # Et plus tard, vous pourrez faire jouer vos nouvelles version du codebreaker et codemaker :
-    import codemaker1
-    play_human_against_codemaker(codemaker1)
+    import codemaker2
+    play_human_against_codemaker(codemaker2)
     
     ##
     import codebreaker2
