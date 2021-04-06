@@ -69,7 +69,8 @@ def play_human_against_codebreaker(codebreaker):
             print("Le codebreaker a trouvé {} en {} essais".format(attempt, n_tries))
             break
 
-##question 11: fonction play_log
+# Question 11: fonction play_log
+
 def play_log(codemaker, codebreaker, file):
     """
     Fonction principale de ce programme :
@@ -99,15 +100,14 @@ def play_log(codemaker, codebreaker, file):
         evaluation_p = (red, white)
         if red >= common.LENGTH:
             break
-    print("La partie a bien été enregistrée dans /logs/" +file+ " !")
+    print("La partie a bien été enregistrée dans /logs/" + file + " !")
 
-        
+
 if __name__ == "__main__":
-    None
-    ##
-    import codebreaker2
+    
+    import codebreaker3
     import codemaker1
-    play(codemaker1, codebreaker2)
+    play(codemaker1, codebreaker3)
 
     ##
     #  Faire jouer un humain contre codemaker0.py :
