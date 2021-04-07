@@ -37,3 +37,39 @@ if __name__ == '__main__':
     test_donner_possibles()
     test_maj_possibles()
     
+## Tests des fonctions de codemakerr2.py
+from common import donner_possibles as dp
+
+def test_best_sol_ini():
+    for attempt in ['RVBJ','RRVB']:
+        for i in range(4):
+            for k in range(4):
+                assert len(dp(attempt,(0,1))) >= len(dp(attempt,(i,k)))
+    
+    for attempt in ['RVVV','RRRR']:
+        for i in range(4):
+            for k in range(4):
+                assert len(dp(attempt,(0,0))) >= len(dp(attempt,(i,k)))
+
+if __name__ == '__main__':
+    test_best_sol_ini()
+
+## Tests des fonctions de codebreaker3.py
+import common
+
+def test_best_attempt_ini():
+    for attempt in ['RVBJ','RRVB']:
+        for i in range(4):
+            for k in range(4):
+                assert len(dp(attempt,(0,1))) <= len(dp(attempt,(i,k)))
+    
+    for attempt in ['RVVV','RRRR']:
+        for i in range(4):
+            for k in range(4):
+                assert len(dp(attempt,(0,0))) >= len(dp(attempt,(i,k)))
+
+if __name__ == '__main__':
+    test_best_sol_ini()
+
+
+    
