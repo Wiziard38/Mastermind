@@ -6,10 +6,16 @@ def init():
    global combinaisons
    combinaisons = common.creer_possibles()
    global possibles
-   possibles = common.creer_possibles()
+   possibles = set()
    global attempt
    attempt = ''
 
+def best_attempt_ini():
+    global attempt
+    while True:
+        attempt = ''.join(common.choices(common.COLORS, common.LENGTH))
+        if len(set(common.COLORS) - set(attempt)) == 4:
+            return attempt
 
 def best_attempt():
     global combinaisons
@@ -35,17 +41,17 @@ def codebreaker(evaluation_p):
     global possibles
     global attempt
     global combinaisons
-    
+    print(evaluation_p)
     if evaluation_p == None:
-        best_attempt()
+        best_attempt_ini()
         return attempt
     elif possibles == set():
         possibles = common.donner_possibles(attempt,evaluation_p)
-        attempt = random.sample(possibles,1)[0]
+        best_attempt()
         return attempt
     else:
         common.maj_possibles(possibles, attempt, evaluation_p)
-        attempt = random.sample(possibles,1)[0]
+        best_attempt()
         return attempt
 
 
