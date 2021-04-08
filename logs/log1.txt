@@ -1,0 +1,8 @@
+GNRN
+0,2
+RROG
+2,2
+RGOR
+1,3
+RRGO
+4,0
