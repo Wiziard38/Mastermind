@@ -13,7 +13,7 @@ def check_codemaker(file):
         eval = (int(red),int(white))
         possibles = common.donner_possibles(attempt, eval)
         
-        while eval != (4,0):
+        while eval != (common.LENGTH,0):
             attempt =log.readline().strip()
             (red,white) = log.readline().strip().split(',')
             eval = (int(red),int(white))
@@ -26,4 +26,4 @@ def check_codemaker(file):
         print("Tout va bien, le codemaker n'a pas triché (de manière visible)")
 
 
-check_codemaker('log')
+check_codemaker('log1')
