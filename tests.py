@@ -13,6 +13,7 @@ def test_evaluation():
     assert common.evaluation("RRVV","VVRR") == (0,4)
     assert common.evaluation("RVRV","VRVR") == (0,4)
     assert common.evaluation("RVRN","NNOO") == (0,1)
+    assert common.evaluation("RVRN","NNOO") == common.evaluation("NNOO", "RVRN")
 
 
 def test_donner_possibles():
