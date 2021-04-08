@@ -69,7 +69,7 @@ def test_best_attempt_ini():
                 assert len(dp(attempt,(0,0))) >= len(dp(attempt,(i,k)))
 
 if __name__ == '__main__':
-    test_best_sol_ini()
+    test_best_attempt_ini()
 
 
     
