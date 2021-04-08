@@ -129,6 +129,6 @@ if __name__ == "__main__":
     play(codemaker2, codebreaker2)
     
     ##
-    import codebreaker2
+    import codebreaker1
     import codemaker1
-    play_log(codemaker1,codebreaker2,"log1")
+    play_log(codemaker1,codebreaker1,"log")
