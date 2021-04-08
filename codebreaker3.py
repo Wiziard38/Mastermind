@@ -3,21 +3,30 @@ import numpy
 import random
 
 def init():
+   global combinaisons
+   combinaisons = common.creer_possibles()
    global possibles
    possibles = set()
    global attempt
    attempt = ''
 
+def best_attempt_ini():
+    global attempt
+    while True:
+        attempt = ''.join(common.choices(common.COLORS, common.LENGTH))
+        if len(set(common.COLORS) - set(attempt)) == 4:
+            return attempt
 
 def best_attempt():
+    global combinaisons
     global possibles
     global attempt
     
     count = len(possibles)
-    attempt modif = attempt
+    attempt_modif = attempt
     
     for solution_tmp in possibles:
-        for attempt_tmp in possibles:
+        for attempt_tmp in combinaisons:
             possibles_tmp = possibles.copy()
             nbr_possibles = common.nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp)
             if nbr_possibles < count: 
@@ -31,8 +40,10 @@ def codebreaker(evaluation_p):
     """ Desc """
     global possibles
     global attempt
+    global combinaisons
+    print(evaluation_p)
     if evaluation_p == None:
-        attempt = ''.join(common.choices(common.COLORS, common.LENGTH))
+        best_attempt_ini()
         return attempt
     elif possibles == set():
         possibles = common.donner_possibles(attempt,evaluation_p)
