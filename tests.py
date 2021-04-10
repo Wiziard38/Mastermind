@@ -5,6 +5,7 @@
 import common
 
 def test_evaluation():
+    """ Desc """
     assert common.evaluation("RVBJ","RMOB") == (1,1)
     assert common.evaluation("RRRR","RRRR") == (4,0)
     assert common.evaluation("RVBJ","MNOG") == (0,0)
@@ -17,6 +18,7 @@ def test_evaluation():
 
 
 def test_donner_possibles():
+    """ Desc """
     assert len(common.donner_possibles("RRRR", (0,0))) == 7**4 # Plus que 7 couleurs possibles
     assert len(common.donner_possibles("RVBG", (0,0))) == 4**4 # Plus que 4 couleurs possibles
     assert common.donner_possibles("RRRV", (2,2)) == {'RRVR','RVRR','VRRR'}
@@ -26,6 +28,7 @@ def test_donner_possibles():
 
 
 def test_maj_possibles():
+    """ Desc """
     possibles = {'RRRV','RRVR','RVRR','VRRR'}
     common.maj_possibles(possibles,'RRRV',(2,2)) 
     assert possibles == {'RRVR','RVRR','VRRR'}
@@ -42,6 +45,7 @@ if __name__ == '__main__':
 from common import donner_possibles as dp
 
 def test_best_sol_ini():
+    """ Desc """
     for attempt in ['RVBJ','RRVB']:
         for i in range(4):
             for k in range(4):
@@ -55,10 +59,11 @@ def test_best_sol_ini():
 if __name__ == '__main__':
     test_best_sol_ini()
 
-## Tests des fonctions de codebreaker3.py
-import common
+## Tests des fonctions de codebreaker3.py (trop dur)
+from common import donner_possibles as dp
 
 def test_best_attempt_ini():
+    """ Desc """
     for attempt in ['RVBJ','RRVB']:
         for i in range(4):
             for k in range(4):
@@ -67,7 +72,7 @@ def test_best_attempt_ini():
     for attempt in ['RVVV','RRRR']:
         for i in range(4):
             for k in range(4):
-                assert len(dp(attempt,(0,0))) >= len(dp(attempt,(i,k)))
+                assert len(dp(attempt,(0,0))) <= len(dp(attempt,(i,k)))
 
 if __name__ == '__main__':
     test_best_attempt_ini()
