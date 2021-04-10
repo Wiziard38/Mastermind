@@ -5,6 +5,7 @@ import common
 
 
 def check_codemaker(file):
+    """ Desc """
     path = os.getcwd()
     with open(path + "/logs/" + file + ".txt", "r") as log:
         # Initialisation :
@@ -23,7 +24,7 @@ def check_codemaker(file):
             else:
                 common.maj_possibles(possibles, attempt, eval)
         
-        print("Tout va bien, le codemaker n'a pas triché (de manière visible)")
+        print("Tout va bien, le codemaker n'a pas triché (de manière visible).")
 
 
 check_codemaker('log1')
