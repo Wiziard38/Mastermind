@@ -66,7 +66,6 @@ def codebreaker(evaluation_p):
     else:
         # Correspond à tous les autres essais
         common.maj_possibles(possibles, attempt, evaluation_p)
-        print(possibles)
         best_attempt()
         return attempt
 
