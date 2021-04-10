@@ -3,9 +3,9 @@
 import random
 import sys
 
-LENGTH = 4
-COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
-#COLORS = ['R', 'V', 'B', 'J', 'N','M']
+LENGTH = 3
+#COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
+COLORS = ['R', 'V', 'B', 'J']
 
 
 def choices(e, n):
@@ -21,7 +21,6 @@ def evaluation(attempt, solution):
     Renvoie un tuple composé du nombre de plots de la bonne couleur bien placés, 
     et du nombre de plots de la bonne couleur mais mals placés.
     """
-    
     if len(solution) != len(attempt): # On vérifie que les deux chaînes ont la même longueur
         sys.exit("Erreur : les deux combinaisons n'ont pas la même longueur")
     
