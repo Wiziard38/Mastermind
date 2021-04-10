@@ -9,7 +9,6 @@ def init():
     """
     global solution
     solution = ''.join(common.choices(common.COLORS, common.LENGTH))
-    print(solution)
     # Pour une version encore plus triviale, on pourrait aussi utiliser solution = ''.join([common.COLORS[0] for i in range(common.LENGTH)])
 
 
