@@ -20,7 +20,9 @@ def init():
 #             return attempt
 
 def best_attempt():
-    """ Desc """
+    """ Fonction qui, avec en paramètres la liste des combinaisons encore possibles
+    au vu des évaluations précedentes (variable globale) va renvoyer quel est le meilleur
+    choix de combinaison possible (dans le pire des cas) """
     global combinaisons
     global possibles
     global attempt
@@ -33,9 +35,11 @@ def best_attempt():
         
         for solution_tmp in possibles:
             possibles_tmp = possibles.copy()
+            # common.maj_possibles(possibles_tmp, attempt_tmp)
             nbr_possibles = common.nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp)
             
             count_0 = max(count_0, nbr_possibles)
+            
         if count_0 < count_1:
             
             count_1 = count_0
@@ -49,17 +53,18 @@ def codebreaker(evaluation_p):
     global attempt
     global combinaisons
     if evaluation_p == None:
+        # Correspond au premier essai
         possibles = common.creer_possibles()
         attempt = ''
         best_attempt()
         return attempt
     elif possibles == set():
-        print(1)
+        # Correspond au deuxième essai
         possibles = common.donner_possibles(attempt,evaluation_p)
         best_attempt()
         return attempt
     else:
-        print(2)
+        # Correspond à tous les autres essais
         common.maj_possibles(possibles, attempt, evaluation_p)
         print(possibles)
         best_attempt()
