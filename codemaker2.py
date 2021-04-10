@@ -17,6 +17,7 @@ def init():
 
 
 def best_sol(attempt):
+    """ Desc """
     global solution
     global possibles    
         
@@ -32,6 +33,7 @@ def best_sol(attempt):
 
 
 def best_sol_ini(attempt):
+    """ Desc """
     global possibles
     global solution
     nb_different_colors = len(set(common.COLORS) - set(attempt))
