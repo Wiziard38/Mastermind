@@ -3,10 +3,11 @@ import numpy
 import random
 
 def init():
-   global possibles
-   possibles = set()
-   global attempt
-   attempt = ''
+    """ Desc """
+    global possibles
+    possibles = set()
+    global attempt
+    attempt = ''
 
 def codebreaker(evaluation_p):
     """ Desc """

@@ -72,11 +72,8 @@ def play_human_against_codebreaker(codebreaker):
 # Question 11: fonction play_log
 
 def play_log(codemaker, codebreaker, file):
-    """
-    Fonction principale de ce programme :
-    Fait jouer ensemble le codebreaker et le codemaker donnés en arguments
-    """
-    #on reprend la fonction play, on veut ajouter les attempts et les
+    """ Desc """
+    # on reprend la fonction play, on veut ajouter les attempts et les
     #évaluations dans un fichier texte
     
     #on crée un fichier texte log, que l'on ouvre en écriture et lecture (w+)

@@ -3,36 +3,47 @@ import numpy
 import random
 
 def init():
-   global combinaisons
-   combinaisons = common.creer_possibles()
-   global possibles
-   possibles = set()
-   global attempt
-   attempt = ''
-
-def best_attempt_ini():
+    """ Desc """
+    global combinaisons
+    combinaisons = common.creer_possibles()
+    global possibles
+    possibles = set()
     global attempt
-    while True:
-        attempt = ''.join(common.choices(common.COLORS, common.LENGTH))
-        if len(set(common.COLORS) - set(attempt)) == 4:
-            return attempt
+    attempt = ''
+
+# def best_attempt_ini():
+#     """ Desc """"
+#     global attempt
+#     while True:
+#         attempt = ''.join(common.choices(common.COLORS, common.LENGTH))
+#         if len(set(common.COLORS) - set(attempt)) == common.LENGTH:
+#             return attempt
 
 def best_attempt():
+    """ Fonction qui, avec en paramètres la liste des combinaisons encore possibles
+    au vu des évaluations précedentes (variable globale) va renvoyer quel est le meilleur
+    choix de combinaison possible (dans le pire des cas) """
     global combinaisons
     global possibles
     global attempt
     
-    count = len(possibles)
+    count_0 = 0
+    count_1 = len(possibles)
     attempt_modif = attempt
-    
-    for solution_tmp in possibles:
-        for attempt_tmp in combinaisons:
+        
+    for attempt_tmp in combinaisons:
+        
+        for solution_tmp in possibles:
             possibles_tmp = possibles.copy()
+            # common.maj_possibles(possibles_tmp, attempt_tmp)
             nbr_possibles = common.nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp)
-            if nbr_possibles < count: 
-                # On cherche la combinaison qui donne le moins possible de possibles
-                count = nbr_possibles
-                attempt_modif = attempt_tmp
+            
+            count_0 = max(count_0, nbr_possibles)
+            
+        if count_0 < count_1:
+            
+            count_1 = count_0
+            attempt_modif = attempt_tmp
     attempt = attempt_modif
 
 
@@ -41,19 +52,22 @@ def codebreaker(evaluation_p):
     global possibles
     global attempt
     global combinaisons
-    print(evaluation_p)
     if evaluation_p == None:
-        best_attempt_ini()
+        # Correspond au premier essai
+        possibles = common.creer_possibles()
+        attempt = ''
+        best_attempt()
         return attempt
     elif possibles == set():
+        # Correspond au deuxième essai
         possibles = common.donner_possibles(attempt,evaluation_p)
         best_attempt()
         return attempt
     else:
+        # Correspond à tous les autres essais
         common.maj_possibles(possibles, attempt, evaluation_p)
         best_attempt()
         return attempt
-
 
 def test():
     attempt = "RRVV"

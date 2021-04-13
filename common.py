@@ -3,9 +3,9 @@
 import random
 import sys
 
-LENGTH = 4
-COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
-#COLORS = ['R', 'V', 'B', 'J', 'N','M']
+LENGTH = 3
+#COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
+COLORS = ['R', 'V', 'B', 'J']
 
 
 def choices(e, n):
@@ -21,7 +21,6 @@ def evaluation(attempt, solution):
     Renvoie un tuple composé du nombre de plots de la bonne couleur bien placés, 
     et du nombre de plots de la bonne couleur mais mals placés.
     """
-    
     if len(solution) != len(attempt): # On vérifie que les deux chaînes ont la même longueur
         sys.exit("Erreur : les deux combinaisons n'ont pas la même longueur")
     
@@ -72,12 +71,13 @@ def donner_possibles(attempt, eval):
     après une evaluation """
     # On va d'abord créer un set qui comprend toutes les combinaisons possibles
     possibles_ini = creer_possibles()
-    # Maintenant on sél´ectionne uniquement les éléments qui correspondent à l'évaluation
+    
+    # Maintenant on séléctionne uniquement les éléments qui correspondent à l'évaluation
     # (pour cela on utilise la symétrie de l'évaluation entre l'essai et la solution)
     possibles = set()
-    for e in possibles_ini:
-        if evaluation(str(e), attempt) == eval:
-            possibles.add(e)
+    for solution_tmp in possibles_ini:
+        if evaluation(attempt, solution_tmp) == eval:
+            possibles.add(solution_tmp)
     return possibles
 
 
@@ -95,40 +95,3 @@ def nombre_possibles(possibles_tmp, attempt, solution_tmp):
     eval_tmp = evaluation(attempt, solution_tmp)
     maj_possibles(possibles_tmp, attempt, eval_tmp)
     return len(possibles_tmp)
-
-
-## Fonctions de test
-
-def test_evaluation():
-    assert evaluation("RVBJ","RMOB") == (1,1)
-    assert evaluation("RRRR","RRRR") == (4,0)
-    assert evaluation("RVBJ","MNOG") == (0,0)
-    assert evaluation("RVBJ","JRVB") == (0,4)
-    assert evaluation("RVVR","RVRV") == (2,2)
-    assert evaluation("RRVV","VVRR") == (0,4)
-    assert evaluation("RVRV","VRVR") == (0,4)
-    assert evaluation("RVRN","NNOO") == (0,1)
-
-
-def test_donner_possibles():
-    assert len(donner_possibles("RRRR", (0,0))) == 7**4 # Plus que 7 couleurs possibles
-    assert len(donner_possibles("RVBG", (0,0))) == 4**4 # Plus que 4 couleurs possibles
-    assert donner_possibles("RRRV", (2,2)) == {'RRVR','RVRR','VRRR'}
-    assert len(donner_possibles("RRRR", (2,0))) == 6*7**2 # (nombre d'emplacements pour les deux rouges) * (nombre des chaines de longueurs 2 avec 7 couleurs possibles)
-    assert len(donner_possibles("RRRR", (1,0))) == 4*7**3 # Même raisonnement
-    assert len(donner_possibles("RROO", (1,1))) == len(donner_possibles("OORR", (1,1)))
-
-
-def test_maj_possibles():
-    possibles = {'RRRV','RRVR','RVRR','VRRR'}
-    maj_possibles(possibles,'RRRV',(2,2)) 
-    assert possibles == {'RRVR','RVRR','VRRR'}
-    possibles = {'RRRV','RRRO','RRRG','RRRN','RRRM'}
-    maj_possibles(possibles,'NGOV',(0,0)) 
-    assert possibles == {'RRRM'}
-
-if __name__ == '__main__':
-    test_evaluation()
-    test_donner_possibles()
-    test_maj_possibles()
-    

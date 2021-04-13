@@ -33,58 +33,61 @@ def plot_histogram(n, codemaker, codebreaker):
     """ Fonction qui trace un histogramme répertoriant le nombre d'essais nécessaires
     pour que codemaker arrive à trouver la combinaison, sur n parties"""
     # On créé la liste du nombre d'essais pour les n parties : 
-    list = []
+    liste_essais = []
     for i in range(n):
-        list.append(recup_print(codemaker, codebreaker))
+        liste_essais.append(recup_print(codemaker, codebreaker))
     # On trace l'histogramme :
     if str(codebreaker.__name__) == 'codebreaker0':
-        plt.hist(list, range = (0,20000), bins = 400, density = True, label=str(codebreaker.__name__))  
+        m = max(liste_essais)
+        plt.hist(liste_essais, range = (0,m), bins = int(m/100), density = True, label=str(codebreaker.__name__))  
     if str(codebreaker.__name__) == 'codebreaker1':
-        plt.hist(list, range = (0,4500), bins = 90, density = True, label=str(codebreaker.__name__)) 
+        p = (len(common.COLORS)**common.LENGTH)
+        plt.hist(liste_essais, range = (0,p), bins = int(p/32), density = True, label=str(codebreaker.__name__)) 
     if str(codebreaker.__name__) == 'codebreaker2':
-        plt.hist(list, range = (0,15), bins = 15, density = True, label=str(codebreaker.__name__)) 
+        m = max(liste_essais)
+        plt.hist(liste_essais, range = (0,m), bins = m, density = True, label=str(codebreaker.__name__)) 
 
 def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     """ Fonction qui trace un histogramme répertoriant la différence du nombre 
     d'essais sur n parties nécessaires, pour que codemaker arrive à trouver la 
     combinaison pour deux versions de codebreakers."""
     # On créé la liste de la différence du nombre d'essais pour les n parties : 
-    list = []
+    liste_gains = []
     for i in range(n):
-        list.append(recup_print(codemaker, codebreaker_1) - recup_print(codemaker, codebreaker_2))
+        liste_gains.append(recup_print(codemaker, codebreaker_1) - recup_print(codemaker, codebreaker_2))
         
     # On trace l'histogramme :
     text = "diffence du nombre d'essais entre " + str(codebreaker_1.__name__) + " et " + str(codebreaker_2.__name__)
-    plt.hist(list, range = (-1000,20000), bins = 420, density = True, label=text) 
+    plt.hist(liste_gains, range = (-1000,20000), bins = 420, density = True, label=text) 
 
 def plot_difference_codemakers(n, codemaker_1, codemaker_2, codebreaker):
     """ Fonction qui trace un histogramme répertoriant la différence du nombre 
     d'essais sur n parties nécessaires, pour deux versions de codemakers différentes
     arrivent à trouver la combinaison."""
     # On créé la liste de la différence du nombre d'essais pour les n parties : 
-    list = []
+    liste_gains = []
     for i in range(n):
-        list.append(recup_print(codemaker_1, codebreaker) - recup_print(codemaker_2, codebreaker))
+        liste_gains.append(recup_print(codemaker_1, codebreaker) - recup_print(codemaker_2, codebreaker))
         
     # On trace l'histogramme :
     text = "diffence du nombre d'essais entre " + str(codemaker_1.__name__) + " et " + str(codebmaker_2.__name__)
-    plt.hist(list, range = (-1000,20000), bins = 420, density = True, label=text) 
+    plt.hist(liste_gains, range = (-1000,20000), bins = 420, density = True, label=text) 
     
     
 def plot_proba_codebreaker0():
     """ Fonction qui permet de tracer de manière probabilistique le nombre d'essais
     nécessaires pour que codebreaker0 trouve le code"""
-    p = 1/(len(common.COLORS)**common.LENGTH)
-    x = np.linspace(0,20000,20000)
-    proba = (lambda x: p*(1-p)**(x-1))(x)
+    p = (len(common.COLORS)**common.LENGTH)
+    x = np.linspace(0,5*p,5*p)
+    proba = (lambda x: (1/p)*(1-1/p)**(x-1))(x)
     plt.plot(x, proba, label = "codebreaker0 théorique")
 
 def plot_proba_codebreaker1():
     """ Fonction qui permet de tracer de manière probabilistique le nombre d'essais
     nécessaires pour que codebreaker1 trouve le code"""
-    p = 1/(len(common.COLORS)**common.LENGTH)
-    x = np.linspace(0,4096,4096)
-    proba = [p]*4096
+    p = (len(common.COLORS)**common.LENGTH)
+    x = np.linspace(0,p,p)
+    proba = [1/p]*p
     plt.plot(x, proba, label = "codebreaker1 théorique")
 
 # Fonctions de tracé    
@@ -96,8 +99,8 @@ if __name__ == "__main__":
     import codebreaker1
     import codebreaker2
     #plot_histogram(100,codemaker1,codebreaker0)
-    #plot_histogram(1000,codemaker1,codebreaker1)
-    #plot_histogram(100,codemaker1,codebreaker2)
+    #plot_histogram(100,codemaker1,codebreaker1)
+    plot_histogram(100,codemaker1,codebreaker2)
     #plot_histogram(20,codemaker2,codebreaker2)
     #plot_proba_codebreaker0()
     #plot_proba_codebreaker1()
