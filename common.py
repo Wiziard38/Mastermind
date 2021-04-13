@@ -3,7 +3,7 @@
 import random
 import sys
 
-LENGTH = 4
+LENGTH = 2
 COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
 #COLORS = ['R', 'V', 'B', 'J']
 
@@ -91,7 +91,7 @@ def maj_possibles(possibles, attempt, eval):
     # Sans supprimer directement, on aurait pu simplement utiliser "possibles & donner_possibles(attempt,eval)"
 
 
-def nombre_possibles(possibles_tmp, attempt, solution_tmp):
-    eval_tmp = evaluation(attempt, solution_tmp)
-    maj_possibles(possibles_tmp, attempt, eval_tmp)
+def nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp):
+    eval_tmp = evaluation(attempt_tmp, solution_tmp)
+    maj_possibles(possibles_tmp, attempt_tmp, eval_tmp)
     return len(possibles_tmp)
