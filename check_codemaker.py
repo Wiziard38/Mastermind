@@ -14,7 +14,7 @@ def check_codemaker(file):
         longueur=len(possibles)
         print(longueur) #à enlever
         
-        while eval != (4,0):
+        while eval != (common.LENGTH,0):
             attempt =log.readline().strip()
             (red,white) = log.readline().strip().split(',')
             eval = (int(red),int(white))
