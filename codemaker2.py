@@ -3,6 +3,7 @@
 import common
 import random
 
+
 def init():
     """
     Cette fonction, appellée à chaque début de partie, initialise un certain nombre de
@@ -13,7 +14,6 @@ def init():
     
     global possibles
     possibles = set()
-    # Pour une version encore plus triviale, on pourrait aussi utiliser solution = ''.join([common.COLORS[0] for i in range(common.LENGTH)])
 
 
 def best_sol(attempt):
@@ -56,7 +56,10 @@ def codemaker(attempt):
     global solution
     global possibles
     if possibles == set():
-        eval = best_sol_ini(attempt)
+        possibles = common.creer_possibles()
+        best_sol(attempt)
+        eval = common.evaluation(attempt,solution)
+        common.maj_possibles(possibles, attempt, eval)
         return eval
     else:
         best_sol(attempt)
