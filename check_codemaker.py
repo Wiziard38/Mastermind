@@ -10,28 +10,27 @@ def check_codemaker(file):
         attempt =log.readline().strip()
         (red,white) = log.readline().strip().split(',')
         eval = (int(red),int(white))
-        possibles = common.donner_possibles(attempt, eval)
-        longueur=len(possibles)
-        print(longueur) #à enlever
-        
+        possibles = common.donner_possibles(attempt, eval)        
         while eval != (common.LENGTH,0):
             attempt =log.readline().strip()
             (red,white) = log.readline().strip().split(',')
             eval = (int(red),int(white))
             common.maj_possibles(possibles, attempt, eval)
-            longueur2=len(possibles)
-            print(longueur2) #à enelever
-            if longueur2>longueur or longueur2==0:
-                print('Le programme a triché')
-                return
-            longueur=longueur2
-            print(longueur) #à enlever
+    if len(possibles) == 0:
+        print('Le programme a triché')
+    else:
         print("Tout va bien, le codemaker n'a pas triché (de manière visible)")
-                
+
 check_codemaker('log')
 
 
-
+        #     print(longueur2) #à enelever
+        #     if longueur2>longueur or longueur2==0:
+        #         print('Le programme a triché')
+        #         return
+        #     longueur=longueur2
+        #     print(longueur) #à enlever
+        # print("Tout va bien, le codemaker n'a pas triché (de manière visible)")
 
 
 
