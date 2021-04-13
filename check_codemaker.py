@@ -21,7 +21,7 @@ def check_codemaker(file):
             common.maj_possibles(possibles, attempt, eval)
             longueur2=len(possibles)
             print(longueur2) #à enelever
-            if longueur2>longueur:
+            if longueur2>longueur or longueur2==0:
                 print('Le programme a triché')
                 return
             longueur=longueur2
