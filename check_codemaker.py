@@ -3,8 +3,40 @@
 import os
 import common
 
-
 def check_codemaker(file):
+    path = os.getcwd()
+    with open(path + "/logs/" + file + ".txt", "r") as log:
+        # Initialisation :
+        attempt =log.readline().strip()
+        (red,white) = log.readline().strip().split(',')
+        eval = (int(red),int(white))
+        possibles = common.donner_possibles(attempt, eval)
+        longueur=len(possibles)
+        print(longueur) #à enlever
+        
+        while eval != (4,0):
+            attempt =log.readline().strip()
+            (red,white) = log.readline().strip().split(',')
+            eval = (int(red),int(white))
+            common.maj_possibles(possibles, attempt, eval)
+            longueur2=len(possibles)
+            print(longueur2) #à enelever
+            if longueur2>longueur:
+                print('Le programme a triché')
+                return
+            longueur=longueur2
+            print(longueur) #à enlever
+        print("Tout va bien, le codemaker n'a pas triché (de manière visible)")
+                
+check_codemaker('log')
+
+
+
+
+
+
+
+def check_codemaker_ancienne_version_qui_ne_marche_pas(file):
     path = os.getcwd()
     with open(path + "/logs/" + file + ".txt", "r") as log:
         # Initialisation :
@@ -27,31 +59,3 @@ def check_codemaker(file):
 
 
 #check_codemaker('log')
-
-def check_codemakerv2(file):
-    path = os.getcwd()
-    with open(path + "/logs/" + file + ".txt", "r") as log:
-        # Initialisation :
-        attempt =log.readline().strip()
-        (red,white) = log.readline().strip().split(',')
-        eval = (int(red),int(white))
-        possibles = common.donner_possibles(attempt, eval)
-        
-        while eval != (4,0):
-            attempt =log.readline().strip()
-            (red,white) = log.readline().strip().split(',')
-            eval1 = (int(red),int(white))
-            if attempt not in possibles:
-                (r1,b1)=eval1
-                (r,b)=eval
-                if r1>=r:
-                    print("Le codemaker à triché de manière visible !")
-                    return
-
-            else:
-                common.maj_possibles(possibles, attempt, eval1)
-            eval=eval1
-        print("Tout va bien, le codemaker n'a pas triché (de manière visible)")
-                
-check_codemakerv2('log')
-
