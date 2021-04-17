@@ -32,7 +32,6 @@ def play_human_against_codemaker(codemaker):
     """
     n_tries = 0
     codemaker.init()
-    evaluation_p = None
     print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
     while True:
         attempt = input("Saisir combinaison: ")  # On lit une combinaison au clavier au lieu d'appeler le codebreaker (qui sera donc joué par un humain)
@@ -42,7 +41,6 @@ def play_human_against_codemaker(codemaker):
         (red, white) = codemaker.codemaker(attempt)
         n_tries += 1
         print("Essai {} : {} ({},{})".format(n_tries, attempt, red, white))
-        evaluation_p = (red, white)
         if red >= common.LENGTH:
             print("Bravo ! Trouvé {} en {} essais".format(attempt, n_tries))
             break
@@ -101,7 +99,7 @@ def play_log(codemaker, codebreaker, file):
 
 
 if __name__ == "__main__":
-    tmp = 3
+    tmp = 5
     if tmp == 0:
         import codebreaker1
         import codemaker1
@@ -122,7 +120,7 @@ if __name__ == "__main__":
         import codemaker2
         play_human_against_codemaker(codemaker2)
     if tmp == 5:
-        import codembreaker3
+        import codebreaker3
         play_human_against_codebreaker(codebreaker3)
     if tmp == 6:
         import codebreaker2
