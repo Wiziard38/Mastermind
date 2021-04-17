@@ -101,26 +101,30 @@ def play_log(codemaker, codebreaker, file):
 
 
 if __name__ == "__main__":
-    import codebreaker2
-    import codemaker2
-    play(codemaker2, codebreaker2)
-
-    ##
-    #  Faire jouer un humain contre codemaker0.py :
-    import codemaker1
-    play_human_against_codemaker(codemaker1)
-    
-    ##
-    # Et plus tard, vous pourrez faire jouer vos nouvelles version du codebreaker et codemaker :
-    import codemaker2
-    play_human_against_codemaker(codemaker2)
-    
-    ##
-    import codebreaker2
-    import codemaker2
-    play(codemaker2, codebreaker2)
-    
-    ##
-    import codebreaker1
-    import codemaker1
-    play_log(codemaker1,codebreaker1,"log")
+    tmp = 2
+    if tmp == 0:
+        import codebreaker1
+        import codemaker1
+        play(codemaker1, codebreaker1)
+    if tmp == 1:
+        import codebreaker2
+        import codemaker1
+        play(codemaker1, codebreaker2)
+    if tmp == 2:
+        import codebreaker2
+        import codemaker2
+        play(codemaker2, codebreaker2)
+    if tmp == 3:
+        import codebreaker3
+        import codemaker2
+        play(codemaker2, codebreaker3)
+    if tmp == 4:
+        import codemaker2
+        play_human_against_codemaker(codemaker2)
+    if tmp == 5:
+        import codembreaker3
+        play_human_against_codebreaker(codebreaker3)
+    if tmp == 6:
+        import codebreaker2
+        import codemaker2
+        play_log(codemaker2,codebreaker2,"log")

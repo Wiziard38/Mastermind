@@ -3,9 +3,18 @@
 import random
 import sys
 
-LENGTH = 4
-COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
-#COLORS = ['R', 'V', 'B', 'J']
+
+tmp = 2
+if tmp == 0:
+    LENGTH = 4
+    COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
+if tmp == 1:
+    LENGTH = 2
+    COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
+if tmp == 2:
+    LENGTH = 3
+    COLORS = ['R', 'V', 'B', 'J']
+
 
 
 def choices(e, n):
