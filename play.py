@@ -101,7 +101,7 @@ def play_log(codemaker, codebreaker, file):
 
 
 if __name__ == "__main__":
-    tmp = 2
+    tmp = 3
     if tmp == 0:
         import codebreaker1
         import codemaker1

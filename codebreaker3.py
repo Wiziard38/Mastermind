@@ -30,7 +30,6 @@ def best_attempt():
         count_0 = 0
         for solution_tmp in possibles:
             possibles_tmp = possibles.copy()
-            # common.maj_possibles(possibles_tmp, attempt_tmp)
             nbr_possibles = common.nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp)
             count_0 = max(count_0, nbr_possibles)
 

@@ -12,7 +12,15 @@ def init():
     
     global attempt
     attempt = ''
-        
+    
+    global tab_evals
+    tab_evals = np.array([[None]*10]*10)
+
+def tab_evaluations():
+    tab_evals = np.array([[None]*10]*10)
+    
+
+
 
 def best_attempt():
     """ Fonction qui, avec en paramètres la liste des combinaisons encore possibles
@@ -21,6 +29,7 @@ def best_attempt():
     global combinaisons
     global possibles
     global attempt
+    global tab_evals
     
     count_1 = len(possibles)
     attempt_modif = attempt
@@ -30,7 +39,6 @@ def best_attempt():
         count_0 = 0
         for solution_tmp in possibles:
             possibles_tmp = possibles.copy()
-            # common.maj_possibles(possibles_tmp, attempt_tmp)
             nbr_possibles = common.nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp)
             count_0 = max(count_0, nbr_possibles)
 

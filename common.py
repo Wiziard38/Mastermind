@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import random
 import sys
+import itertools
 
 
 tmp = 2
@@ -59,8 +61,10 @@ def evaluation(attempt, solution):
             dict[element] -= 1 # On dit que la couleur y est une fois de moins dans le disctionnaire
     return(red,white)
 
-
 def creer_possibles():
+    return set(''.join(x) for x in itertools.product(COLORS,repeat=LENGTH))
+
+def creer_possibles_INUTILE():
     """ Fonction qui nous donne toutes les possibilités de chaîne de taille LENGTH 
     parmis les couleurs COLORS. """
     count = 0
