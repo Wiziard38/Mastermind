@@ -3,7 +3,7 @@
 import random
 import sys
 
-LENGTH = 2
+LENGTH = 4
 COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
 #COLORS = ['R', 'V', 'B', 'J']
 
@@ -95,3 +95,20 @@ def nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp):
     eval_tmp = evaluation(attempt_tmp, solution_tmp)
     maj_possibles(possibles_tmp, attempt_tmp, eval_tmp)
     return len(possibles_tmp)
+
+
+## A SUPRIMER
+
+def possibles():
+    attempt = str(input("attempt : "))
+    red = int(input("red : "))
+    white = int(input("white : "))
+    eval = (red, white)
+    pos = donner_possibles(attempt, eval)
+    while input('y/n') == 'y':
+        attempt = input("attempt : ")
+        red = int(input("red : "))
+        white = int(input("white : "))
+        eval = (red, white)
+        maj_possibles(pos, attempt, eval)
+    return pos

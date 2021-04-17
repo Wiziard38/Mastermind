@@ -6,6 +6,7 @@ def init():
     """ Desc """
     global possibles
     possibles = set()
+    
     global attempt
     attempt = ''
 
