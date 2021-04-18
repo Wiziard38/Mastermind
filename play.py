@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
+# Import des librairies utilisées :
 import os
+# Imports des fichiers utilisés :
 import common
-
 
 def play(codemaker, codebreaker):
     """

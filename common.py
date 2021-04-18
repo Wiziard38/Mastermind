@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Import des librairies utilisées :
 import random
 import sys
 import itertools
-
 
 tmp = 2
 if tmp == 0:

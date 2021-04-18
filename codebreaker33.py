@@ -1,6 +1,11 @@
-import common
-import numpy
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Import des librairies utilisées :
+import numpy as np
 import random
+# Imports des fichiers utilisés :
+import common
 
 def init():
     """ Desc """
@@ -18,9 +23,8 @@ def init():
 
 def tab_evaluations():
     tab_evals = np.array([[None]*10]*10)
+    return tab_evals
     
-
-
 
 def best_attempt():
     """ Fonction qui, avec en paramètres la liste des combinaisons encore possibles

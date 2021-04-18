@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-## Test des fonctions de common.py
+# Imports des fichiers utilisés :
 import common
 
 def test_evaluation():
@@ -76,6 +76,3 @@ def test_best_attempt_ini():
 
 if __name__ == '__main__':
     test_best_attempt_ini()
-
-
-    

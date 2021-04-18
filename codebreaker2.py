@@ -1,6 +1,11 @@
-import common
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Import des librairies utilisées :
 import numpy
 import random
+# Imports des fichiers utilisés :
+import common
 
 def init():
     """ Desc """
