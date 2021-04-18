@@ -6,7 +6,7 @@ import random
 import sys
 import itertools
 
-tmp = 2
+tmp = 2 # PARTIE A SUPPRIMER APRES, C'EST JUSTE POUR QUE CE SOIT PLUS FACILE
 if tmp == 0:
     LENGTH = 4
     COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
@@ -16,7 +16,6 @@ if tmp == 1:
 if tmp == 2:
     LENGTH = 3
     COLORS = ['R', 'V', 'B', 'J']
-
 
 
 def choices(e, n):
@@ -60,6 +59,7 @@ def evaluation(attempt, solution):
             white += 1
             dict[element] -= 1 # On dit que la couleur y est une fois de moins dans le disctionnaire
     return(red,white)
+
 
 def creer_possibles():
     return set(''.join(x) for x in itertools.product(COLORS,repeat=LENGTH))
