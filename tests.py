@@ -16,6 +16,10 @@ def test_evaluation():
     assert common.evaluation("RVRN","NNOO") == (0,1)
     assert common.evaluation("RVRN","NNOO") == common.evaluation("NNOO", "RVRN")
 
+def test_creer_possibles():
+    """ Desc """
+    assert len(common.creer_possibles()) == 4096
+
 
 def test_donner_possibles():
     """ Desc """
@@ -38,6 +42,7 @@ def test_maj_possibles():
 
 if __name__ == '__main__':
     test_evaluation()
+    test_creer_possibles()
     test_donner_possibles()
     test_maj_possibles()
     
@@ -75,4 +80,5 @@ def test_best_attempt_ini():
                 assert len(dp(attempt,(0,0))) <= len(dp(attempt,(i,k)))
 
 if __name__ == '__main__':
-    test_best_attempt_ini()
+    #test_best_attempt_ini()
+    None
