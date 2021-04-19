@@ -7,6 +7,7 @@ import random
 # Imports des fichiers utilisés :
 import common
 
+
 def init():
     """ Desc """
     global combinaisons
@@ -17,7 +18,7 @@ def init():
     
     global attempt
     attempt = ''
-        
+
 
 def best_attempt():
     """ Fonction qui, avec en paramètres la liste des combinaisons encore possibles

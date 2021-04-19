@@ -47,7 +47,7 @@ def play_human_against_codemaker(codemaker):
             print("Bravo ! Trouvé {} en {} essais".format(attempt, n_tries))
             break
 
- 
+
 def play_human_against_codebreaker(codebreaker):
     """
     Fait jouer l'utilisateur humain (au clavier) dans le role du codemaker
@@ -75,11 +75,11 @@ def play_log(codemaker, codebreaker, file):
     """ Desc """
     # on reprend la fonction play, on veut ajouter les attempts et les
     #évaluations dans un fichier texte
-    
+
     #on crée un fichier texte log, que l'on ouvre en écriture et lecture (w+)
     path = os.getcwd()
-    log = open(path + "/logs/" + file + ".txt", "w+") 
-    
+    log = open(path + "/logs/" + file + ".txt", "w+")
+
     n_tries = 0
     codebreaker.init()
     codemaker.init()
@@ -88,12 +88,12 @@ def play_log(codemaker, codebreaker, file):
         attempt = codebreaker.codebreaker(evaluation_p)
         # on écrit l'attempt dans le log puis on passe à la ligne suivante avec \n
         log.write(attempt+"\n")
-        
+
         (red, white) = codemaker.codemaker(attempt)
         #idem pour l'évaluation retournée par codemaker
         log.write(str(red)+','+str(white)+'\n')
         n_tries += 1
-        
+
         evaluation_p = (red, white)
         if red >= common.LENGTH:
             break
@@ -101,7 +101,7 @@ def play_log(codemaker, codebreaker, file):
 
 
 if __name__ == "__main__":
-    tmp = 3
+    tmp = 2
     if tmp == 0:
         import codebreaker1
         import codemaker1

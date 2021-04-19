@@ -49,7 +49,7 @@ def plot_histogram(n, codemaker, codebreaker):
         p = (len(common.COLORS)**common.LENGTH)
         plt.hist(liste_essais, range = (0,p+1), bins = int(p/32), density = True, label=str(codebreaker.__name__)) 
     if str(codebreaker.__name__) == 'codebreaker2':
-        plt.hist(liste_essais, range = (-0.5,m+0.5), bins = m+1, density = True, label=str(codebreaker.__name__)) 
+        plt.hist(liste_essais, range = (0,m+1), bins = m+1, density = True, label=str(codebreaker.__name__)) 
 
 def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     """ Fonction qui trace un histogramme répertoriant la différence du nombre 
@@ -59,6 +59,7 @@ def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     liste_gains = []
     for _ in range(n):
         liste_gains.append(recup_print(codemaker, codebreaker_1) - recup_print(codemaker, codebreaker_2))
+    print("Moyenne du gain en nombre d'essais entre ", codebreaker_1.__name__, " et ", codebreaker_2.__name__, " contre ", codemaker.__name__, ' : ', np.mean(liste_gains))
         
     # On trace l'histogramme :
     text = "diffence du nombre d'essais entre " + str(codebreaker_1.__name__) + " et " + str(codebreaker_2.__name__)
@@ -72,7 +73,8 @@ def plot_difference_codemakers(n, codemaker_1, codemaker_2, codebreaker):
     liste_gains = []
     for _ in range(n):
         liste_gains.append(recup_print(codemaker_1, codebreaker) - recup_print(codemaker_2, codebreaker))
-        
+    print("Moyenne du gain en nombre d'essais entre ", codemaker_1.__name__, " et ", codemaker_2.__name__, " contre ", codebreaker.__name__, ' : ', np.mean(liste_gains))
+
     # On trace l'histogramme :
     text = "diffence du nombre d'essais entre " + str(codemaker_1.__name__) + " et " + str(codemaker_2.__name__)
     plt.hist(liste_gains, range = (-1000,20000), bins = 420, density = True, label=text) 
@@ -108,7 +110,7 @@ if __name__ == "__main__":
     #plot_histogram(20,codemaker2,codebreaker2)
     #plot_proba_codebreaker0()
     #plot_proba_codebreaker1()
-    #plot_difference_codebreakers(100, codemaker1, codebreaker0, codebreaker1)
-    #plot_difference_codemakers(100, codemaker1, codemaker2, codebreaker1)
+    #plot_difference_codebreakers(10, codemaker1, codebreaker0, codebreaker1)
+    #plot_difference_codemakers(1, codemaker1, codemaker2, codebreaker1)
     plt.legend()
     plt.show()

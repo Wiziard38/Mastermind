@@ -7,7 +7,7 @@ import sys
 import itertools
 import numpy as np
 
-tmp = 0 # PARTIE A SUPPRIMER APRES, C'EST JUSTE POUR QUE CE SOIT PLUS FACILE
+tmp = 2 # PARTIE A SUPPRIMER APRES, C'EST JUSTE POUR QUE CE SOIT PLUS FACILE
 if tmp == 0:
     LENGTH = 4
     COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
@@ -16,7 +16,7 @@ if tmp == 1:
     COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
 if tmp == 2:
     LENGTH = 3
-    COLORS = ['R', 'V', 'B', 'J']
+    COLORS = ['R', 'V', 'B', 'J', 'N']
 
 
 def choices(e, n):
@@ -26,7 +26,7 @@ def choices(e, n):
     """
     return [random.choice(e) for i in range(n)]
 
-def evaluation(attempt, solution):
+def evaluation_INUTILE(attempt, solution):
     """Fonction qui évalue un essai en fonction de la solution de référence.
     Renvoie un tuple composé du nombre de plots de la bonne couleur bien placés, 
     et du nombre de plots de la bonne couleur mais mals placés.
@@ -53,10 +53,6 @@ def creer_possibles():
     parmis les couleurs COLORS. """
     return set(''.join(x) for x in itertools.product(COLORS,repeat=LENGTH))
 
-
-def map_evaluations(attempt):
-    matrice = np.array([[None]*LENGTH]*len(COLORS))
-    print(matrice)
 
 def donner_possibles(attempt, eval):
     """ Fonction qui renvoie un set comprenant toutes les combinaisons possibles 
@@ -107,9 +103,9 @@ def possibles():
     return pos
 
 
-## A SUPPRIMER APRES !!!
+## A SUPPRIMER APRES !!! En fait pas eval qui est meilleure
 
-def evaluation_INUTILE(attempt, solution):
+def evaluation(attempt, solution):
     """Fonction qui évalue un essai en fonction de la solution de référence.
     Renvoie un tuple composé du nombre de plots de la bonne couleur bien placés, 
     et du nombre de plots de la bonne couleur mais mals placés.
