@@ -13,6 +13,8 @@ import play
 def recup_print(codemaker, codebreaker):
     """ Fonction qui permet de récuperer du texte qui a été écrit dans la console 
     python par la fonction play appliquée à codebreaker et codemaker"""
+    # on récupère la sortie normale :
+    old_stdout = sys.stdout
     # rediriger stdout dans un buffer :
     sys.stdout = io.StringIO()
     # appel de la fonction qui remplira stdout (donc le buffer)
@@ -22,7 +24,7 @@ def recup_print(codemaker, codebreaker):
     # fermer le buffer :
     sys.stdout.close()   
     # rediriger stdout vers la sortie standart :
-    sys.stdout = sys.__stdout__
+    sys.stdout = old_stdout
     
     
     # Maintenant on récupère la partie de l'affichage qui nous intéresse :
