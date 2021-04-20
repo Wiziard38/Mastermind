@@ -13,8 +13,6 @@ import play
 def recup_print(codemaker, codebreaker):
     """ Fonction qui permet de récuperer du texte qui a été écrit dans la console 
     python par la fonction play appliquée à codebreaker et codemaker"""
-    # on récupère la sortie normale :
-    old_stdout = sys.stdout
     # rediriger stdout dans un buffer :
     sys.stdout = io.StringIO()
     # appel de la fonction qui remplira stdout (donc le buffer)
@@ -24,7 +22,7 @@ def recup_print(codemaker, codebreaker):
     # fermer le buffer :
     sys.stdout.close()    
     # rediriger stdout vers la sortie standart :
-    sys.stdout = old_stdout
+    sys.stdout = sys.__stdout__
     
     # Maintenant on récupère la partie de l'affichage qui nous intéresse :
     s = s[-15:]
@@ -41,18 +39,19 @@ def plot_histogram(n, codemaker, codebreaker):
     # On créé la liste du nombre d'essais pour les n parties : 
     liste_essais = list(map(lambda x : recup_print(codemaker, codebreaker), np.linspace(0,1,n)))
     
-    # On affiche la moyenne du nombre d'essais par parties
-    print("Moyenne du nombre d'essais dans une partie entre ", codemaker.__name__, " et ", codebreaker.__name__, " : ", np.mean(liste_essais))
-    
     # On trace l'histogramme :
-    m = max(liste_essais)
+    M = max(liste_essais)
     if str(codebreaker.__name__) == 'codebreaker0':
-        plt.hist(liste_essais, range = (0,m+1), bins = int(m/100), density = True, label=str(codebreaker.__name__))
+        plt.hist(liste_essais, range = (0,M+1), bins = int(M/100), density = True, label=str(codebreaker.__name__))
     if str(codebreaker.__name__) == 'codebreaker1':
         p = (len(common.COLORS)**common.LENGTH)
         plt.hist(liste_essais, range = (0,p+1), bins = int(p/32), density = True, label=str(codebreaker.__name__)) 
     if str(codebreaker.__name__) == 'codebreaker2':
-        plt.hist(liste_essais, range = (0,m+1), bins = m+1, density = True, label=str(codebreaker.__name__)) 
+        plt.hist(liste_essais, range = (0,M+1), bins = M+1, density = True, label=str(codebreaker.__name__)) 
+
+    # On affiche la moyenne du nombre d'essais par parties
+    plt.title("Moyenne du nombre d'essais dans une partie entre " + str(codemaker.__name__) + "\n et " + str(codebreaker.__name__) + " : " + str(np.mean(liste_essais)))
+
 
 def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     """ Fonction qui trace un histogramme répertoriant la différence du nombre 
@@ -60,13 +59,15 @@ def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     combinaison pour deux versions de codebreakers."""
     # On créé la liste de la différence du nombre d'essais pour les n parties : 
     liste_gains = list(map(lambda x : recup_print(codemaker, codebreaker_1) - recup_print(codemaker, codebreaker_2), np.linspace(0,1,n)))
-    
-    # On affiche la moyenne du gain en nombre d'essais par parties
-    print("Moyenne du gain en nombre d'essais entre ", codebreaker_1.__name__, " et ", codebreaker_2.__name__, " contre ", codemaker.__name__, ' : ', np.mean(liste_gains))
-        
+       
     # On trace l'histogramme :
+    (M,m) = (max(liste_gains),min(liste_gains))
     text = "diffence du nombre d'essais entre " + str(codebreaker_1.__name__) + " et " + str(codebreaker_2.__name__)
-    plt.hist(liste_gains, range = (-1000,20000), bins = 420, density = True, label=text) 
+    plt.hist(liste_gains, range = (m,M+1), bins = (M+1-m), density = True, label=text) 
+
+    # On affiche la moyenne du nombre d'essais par parties
+    plt.title("Moyenne du nombre d'essais dans une partie entre " + str(codebreaker_1.__name__) + "\n et " + str(codebreaker_2.__name__) + " contre " + str(codemaker.__name__) + " : " + str(np.mean(liste_gains)))
+    
 
 def plot_difference_codemakers(n, codemaker_1, codemaker_2, codebreaker):
     """ Fonction qui trace un histogramme répertoriant la différence du nombre 
@@ -75,14 +76,15 @@ def plot_difference_codemakers(n, codemaker_1, codemaker_2, codebreaker):
     # On créé la liste de la différence du nombre d'essais pour les n parties : 
     liste_gains = list(map(lambda x : recup_print(codemaker_1, codebreaker) - recup_print(codemaker_2, codebreaker), np.linspace(0,1,n)))
     
-    # On affiche la moyenne du gain en nombre d'essais par parties
-    print("Moyenne du gain en nombre d'essais entre ", codemaker_1.__name__, " et ", codemaker_2.__name__, " contre ", codebreaker.__name__, ' : ', np.mean(liste_gains))
-
     # On trace l'histogramme :
+    (M,m) = (max(liste_gains),min(liste_gains))
     text = "diffence du nombre d'essais entre " + str(codemaker_1.__name__) + " et " + str(codemaker_2.__name__)
-    plt.hist(liste_gains, range = (-1000,20000), bins = 420, density = True, label=text) 
+    plt.hist(liste_gains, range = (m,M+1), bins = (M+1-m), density = True, label=text) 
     
-    
+    # On affiche la moyenne du nombre d'essais par parties
+    plt.title("Moyenne du nombre d'essais dans une partie entre " + str(codemaker_1.__name__) + "\n et " + str(codemaker_2.__name__) + " contre " + str(codebreaker.__name__) + " : " + str(np.mean(liste_gains)))
+
+
 def plot_proba_codebreaker0():
     """ Fonction qui permet de tracer de manière probabilistique le nombre d'essais
     nécessaires pour que codebreaker0 trouve le code"""
@@ -108,13 +110,13 @@ if __name__ == "__main__":
     import codebreaker0
     import codebreaker1
     import codebreaker2
-    #plot_histogram(100,codemaker1,codebreaker0)
+    plot_histogram(100,codemaker1,codebreaker0)
     #plot_histogram(100,codemaker1,codebreaker1)
-    #plot_histogram(100,codemaker2,codebreaker2)
+    #plot_histogram(10,codemaker2,codebreaker2)
     #plot_histogram(20,codemaker2,codebreaker2)
     #plot_proba_codebreaker0()
     #plot_proba_codebreaker1()
     #plot_difference_codebreakers(10, codemaker1, codebreaker0, codebreaker1)
-    plot_difference_codemakers(10, codemaker1, codemaker2, codebreaker1)
+    #plot_difference_codemakers(10, codemaker1, codemaker2, codebreaker1)
     plt.legend()
     plt.show()
