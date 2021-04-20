@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
+# Import des librairies utilisées :
 import os
+# Imports des fichiers utilisés :
 import common
-
 
 def play(codemaker, codebreaker):
     """
@@ -32,7 +34,6 @@ def play_human_against_codemaker(codemaker):
     """
     n_tries = 0
     codemaker.init()
-    evaluation_p = None
     print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
     while True:
         attempt = input("Saisir combinaison: ")  # On lit une combinaison au clavier au lieu d'appeler le codebreaker (qui sera donc joué par un humain)
@@ -42,12 +43,11 @@ def play_human_against_codemaker(codemaker):
         (red, white) = codemaker.codemaker(attempt)
         n_tries += 1
         print("Essai {} : {} ({},{})".format(n_tries, attempt, red, white))
-        evaluation_p = (red, white)
         if red >= common.LENGTH:
             print("Bravo ! Trouvé {} en {} essais".format(attempt, n_tries))
             break
 
- 
+
 def play_human_against_codebreaker(codebreaker):
     """
     Fait jouer l'utilisateur humain (au clavier) dans le role du codemaker
@@ -75,11 +75,11 @@ def play_log(codemaker, codebreaker, file):
     """ Desc """
     # on reprend la fonction play, on veut ajouter les attempts et les
     #évaluations dans un fichier texte
-    
+
     #on crée un fichier texte log, que l'on ouvre en écriture et lecture (w+)
     path = os.getcwd()
-    log = open(path + "/logs/" + file + ".txt", "w+") 
-    
+    log = open(path + "/logs/" + file + ".txt", "w+")
+
     n_tries = 0
     codebreaker.init()
     codemaker.init()
@@ -88,12 +88,12 @@ def play_log(codemaker, codebreaker, file):
         attempt = codebreaker.codebreaker(evaluation_p)
         # on écrit l'attempt dans le log puis on passe à la ligne suivante avec \n
         log.write(attempt+"\n")
-        
+
         (red, white) = codemaker.codemaker(attempt)
         #idem pour l'évaluation retournée par codemaker
         log.write(str(red)+','+str(white)+'\n')
         n_tries += 1
-        
+
         evaluation_p = (red, white)
         if red >= common.LENGTH:
             break
@@ -101,27 +101,30 @@ def play_log(codemaker, codebreaker, file):
 
 
 if __name__ == "__main__":
-    
-    import codebreaker3
-    import codemaker1
-    play(codemaker1, codebreaker3)
-
-    ##
-    #  Faire jouer un humain contre codemaker0.py :
-    import codemaker1
-    play_human_against_codemaker(codemaker1)
-    
-    ##
-    # Et plus tard, vous pourrez faire jouer vos nouvelles version du codebreaker et codemaker :
-    import codemaker2
-    play_human_against_codemaker(codemaker2)
-    
-    ##
-    import codebreaker2
-    import codemaker2
-    play(codemaker2, codebreaker2)
-    
-    ##
-    import codebreaker1
-    import codemaker1
-    play_log(codemaker1,codebreaker1,"log")
+    tmp = 2
+    if tmp == 0:
+        import codebreaker1
+        import codemaker1
+        play(codemaker1, codebreaker1)
+    if tmp == 1:
+        import codebreaker2
+        import codemaker1
+        play(codemaker1, codebreaker2)
+    if tmp == 2:
+        import codebreaker2
+        import codemaker2
+        play(codemaker2, codebreaker2)
+    if tmp == 3:
+        import codebreaker3
+        import codemaker2
+        play(codemaker2, codebreaker3)
+    if tmp == 4:
+        import codemaker2
+        play_human_against_codemaker(codemaker2)
+    if tmp == 5:
+        import codebreaker3
+        play_human_against_codebreaker(codebreaker3)
+    if tmp == 6:
+        import codebreaker2
+        import codemaker2
+        play_log(codemaker2,codebreaker2,"log")

@@ -1,11 +1,22 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
+# Import des librairies utilisées :
 import random
 import sys
+import itertools
+import numpy as np
 
-LENGTH = 4
-COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
-#COLORS = ['R', 'V', 'B', 'J']
+tmp = 2 # PARTIE A SUPPRIMER APRES, C'EST JUSTE POUR QUE CE SOIT PLUS FACILE
+if tmp == 0:
+    LENGTH = 4
+    COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
+if tmp == 1:
+    LENGTH = 2
+    COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
+if tmp == 2:
+    LENGTH = 3
+    COLORS = ['R', 'V', 'B', 'J', 'N']
 
 
 def choices(e, n):
@@ -15,7 +26,85 @@ def choices(e, n):
     """
     return [random.choice(e) for i in range(n)]
 
+def evaluation_INUTILE(attempt, solution):
+    """Fonction qui évalue un essai en fonction de la solution de référence.
+    Renvoie un tuple composé du nombre de plots de la bonne couleur bien placés, 
+    et du nombre de plots de la bonne couleur mais mals placés.
+    """
+    if len(solution) != len(attempt): # On vérifie que les deux chaînes ont la même longueur
+        sys.exit("Erreur : les deux combinaisons n'ont pas la même longueur")
     
+    (red, white) = (0,0) # Nombre de plots bien placés, mal placés
+    list_attempt = ['*' if attempt[i] == solution[i] else attempt[i] for i in range(LENGTH)] 
+    # On créé une liste qui pour pour tout i allant de 0 à LENGTH vaut '*' si le plot était bien placé, et attempt[i] sinon
+    list_solution = ['#' if list_attempt[i] == '*' else solution[i] for i in range(LENGTH)]
+    # On créé de la même sorte une liste qui pour tout i allant de 0 à LENGTH vaut '#' si attempt[i] valait '*', et solution[i] sinon
+    red = list_attempt.count('*') # On compte le nombre de plots bien placés en relevant le nombre de '*'
+
+    for element in list_attempt:
+        if element != '*' and element in list_solution: # On prend en compte que les plots mal placés
+            white += 1
+            list_solution[list_solution.index(element)] = '#'
+    return (red, white)
+
+
+def creer_possibles():
+    """ Fonction qui nous donne toutes les possibilités de chaîne de taille LENGTH 
+    parmis les couleurs COLORS. """
+    return set(''.join(x) for x in itertools.product(COLORS,repeat=LENGTH))
+
+
+def donner_possibles(attempt, eval):
+    """ Fonction qui renvoie un set comprenant toutes les combinaisons possibles 
+    après une evaluation """
+    # On va d'abord créer un set qui comprend toutes les combinaisons possibles
+    possibles_ini = creer_possibles()
+    
+    # Maintenant on séléctionne uniquement les éléments qui correspondent à l'évaluation
+    # (pour cela on utilise la symétrie de l'évaluation entre l'essai et la solution)
+    possibles = set()
+    for solution_tmp in possibles_ini:
+        if evaluation(attempt, solution_tmp) == eval:
+            possibles.add(solution_tmp)
+    return possibles
+
+
+def maj_possibles(possibles, attempt, eval):
+    """ Fonction qui modifie l'ensemble des possibiltés accordément avec un nouvel
+    essai (une chaine attempt et l'évaluation associée """
+    tmp = donner_possibles(attempt,eval)
+    for element in possibles.copy():
+        if element not in tmp:
+            possibles.remove(element) # On cherche à supprimer sirectement sur la variable 'possibles'
+    # Sans supprimer directement, on aurait pu simplement utiliser "possibles & donner_possibles(attempt,eval)"
+
+
+def nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp):
+    """ Desc """
+    eval_tmp = evaluation(attempt_tmp, solution_tmp)
+    maj_possibles(possibles_tmp, attempt_tmp, eval_tmp)
+    return len(possibles_tmp)
+
+
+## A supprimer à la fin, fonction juste pour faire des tests
+
+def possibles():
+    attempt = str(input("attempt : "))
+    red = int(input("red : "))
+    white = int(input("white : "))
+    eval = (red, white)
+    pos = donner_possibles(attempt, eval)
+    while input('y/n') == 'y':
+        attempt = input("attempt : ")
+        red = int(input("red : "))
+        white = int(input("white : "))
+        eval = (red, white)
+        maj_possibles(pos, attempt, eval)
+    return pos
+
+
+## A SUPPRIMER APRES !!! En fait pas eval qui est meilleure
+
 def evaluation(attempt, solution):
     """Fonction qui évalue un essai en fonction de la solution de référence.
     Renvoie un tuple composé du nombre de plots de la bonne couleur bien placés, 
@@ -50,8 +139,7 @@ def evaluation(attempt, solution):
             dict[element] -= 1 # On dit que la couleur y est une fois de moins dans le disctionnaire
     return(red,white)
 
-
-def creer_possibles():
+def creer_possibles_INUTILE():
     """ Fonction qui nous donne toutes les possibilités de chaîne de taille LENGTH 
     parmis les couleurs COLORS. """
     count = 0
@@ -64,34 +152,3 @@ def creer_possibles():
         count += 1
         set1 = set1 - set2
     return set1
-
-
-def donner_possibles(attempt, eval):
-    """ Fonction qui renvoie un set comprenant toutes les combinaisons possibles 
-    après une evaluation """
-    # On va d'abord créer un set qui comprend toutes les combinaisons possibles
-    possibles_ini = creer_possibles()
-    
-    # Maintenant on séléctionne uniquement les éléments qui correspondent à l'évaluation
-    # (pour cela on utilise la symétrie de l'évaluation entre l'essai et la solution)
-    possibles = set()
-    for solution_tmp in possibles_ini:
-        if evaluation(attempt, solution_tmp) == eval:
-            possibles.add(solution_tmp)
-    return possibles
-
-
-def maj_possibles(possibles, attempt, eval):
-    """ Fonction qui modifie l'ensemble des possibiltés accordément avec un nouvel
-    essai (une chaine attempt et l'évaluation associée """
-    tmp = donner_possibles(attempt,eval)
-    for element in possibles.copy():
-        if element not in tmp:
-            possibles.remove(element) # On cherche à supprimer sirectement sur la variable 'possibles'
-    # Sans supprimer directement, on aurait pu simplement utiliser "possibles & donner_possibles(attempt,eval)"
-
-
-def nombre_possibles(possibles_tmp, attempt, solution_tmp):
-    eval_tmp = evaluation(attempt, solution_tmp)
-    maj_possibles(possibles_tmp, attempt, eval_tmp)
-    return len(possibles_tmp)

@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Imports des fichiers utilisés :
 import common
-import numpy
 
 def init():
     global liste
