@@ -51,8 +51,6 @@ def best_attempt():
 
             x = attempt_to_number(attempt_tmp)
             y = attempt_to_number(solution_tmp)
-            if x>y:
-                (x,y) = (y,x)
 
             if tab_evals[x][y][0] == -1:
                 eval_tmp = common.evaluation(attempt_tmp, solution_tmp)

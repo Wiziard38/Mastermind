@@ -2,19 +2,20 @@
 # -*- coding: utf-8 -*-
 
 # Imports des fichiers utilisés :
+import tmp_2
 import common
 
 def test_evaluation():
     """ Desc """
-    assert common.evaluation("RVBJ","RMOB") == (1,1)
-    assert common.evaluation("RRRR","RRRR") == (4,0)
-    assert common.evaluation("RVBJ","MNOG") == (0,0)
-    assert common.evaluation("RVBJ","JRVB") == (0,4)
-    assert common.evaluation("RVVR","RVRV") == (2,2)
-    assert common.evaluation("RRVV","VVRR") == (0,4)
-    assert common.evaluation("RVRV","VRVR") == (0,4)
-    assert common.evaluation("RVRN","NNOO") == (0,1)
-    assert common.evaluation("RVRN","NNOO") == common.evaluation("NNOO", "RVRN")
+    assert tmp_2.evaluation("RVBJ","RMOB") == (1,1)
+    assert tmp_2.evaluation("RRRR","RRRR") == (4,0)
+    assert tmp_2.evaluation("RVBJ","MNOG") == (0,0)
+    assert tmp_2.evaluation("RVBJ","JRVB") == (0,4)
+    assert tmp_2.evaluation("RVVR","RVRV") == (2,2)
+    assert tmp_2.evaluation("RRVV","VVRR") == (0,4)
+    assert tmp_2.evaluation("RVRV","VRVR") == (0,4)
+    assert tmp_2.evaluation("RVRN","NNOO") == (0,1)
+    assert tmp_2.evaluation("RVRN","NNOO") == tmp_2.evaluation("NNOO", "RVRN")
 
 def test_creer_possibles():
     """ Desc """
@@ -34,10 +35,10 @@ def test_donner_possibles():
 def test_maj_possibles():
     """ Desc """
     possibles = {'RRRV','RRVR','RVRR','VRRR'}
-    common.maj_possibles(possibles,'RRRV',(2,2)) 
+    common.maj_possibles(possibles,'RRRV',(2,2))
     assert possibles == {'RRVR','RVRR','VRRR'}
     possibles = {'RRRV','RRRO','RRRG','RRRN','RRRM'}
-    common.maj_possibles(possibles,'NGOV',(0,0)) 
+    common.maj_possibles(possibles,'NGOV',(0,0))
     assert possibles == {'RRRM'}
 
 if __name__ == '__main__':
@@ -45,40 +46,3 @@ if __name__ == '__main__':
     test_creer_possibles()
     test_donner_possibles()
     test_maj_possibles()
-    
-## Tests des fonctions de codemakerr2.py
-from common import donner_possibles as dp
-
-def test_best_sol_ini():
-    """ Desc """
-    for attempt in ['RVBJ','RRVB']:
-        for i in range(4):
-            for k in range(4):
-                assert len(dp(attempt,(0,1))) >= len(dp(attempt,(i,k)))
-    
-    for attempt in ['RVVV','RRRR']:
-        for i in range(4):
-            for k in range(4):
-                assert len(dp(attempt,(0,0))) >= len(dp(attempt,(i,k)))
-
-if __name__ == '__main__':
-    test_best_sol_ini()
-
-## Tests des fonctions de codebreaker3.py (trop dur)
-from common import donner_possibles as dp
-
-def test_best_attempt_ini():
-    """ Desc """
-    for attempt in ['RVBJ','RRVB']:
-        for i in range(4):
-            for k in range(4):
-                assert len(dp(attempt,(0,1))) <= len(dp(attempt,(i,k)))
-    
-    for attempt in ['RVVV','RRRR']:
-        for i in range(4):
-            for k in range(4):
-                assert len(dp(attempt,(0,0))) <= len(dp(attempt,(i,k)))
-
-if __name__ == '__main__':
-    #test_best_attempt_ini()
-    None

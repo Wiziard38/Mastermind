@@ -101,7 +101,7 @@ def play_log(codemaker, codebreaker, file):
 
 
 if __name__ == "__main__":
-    tmp = 2
+    tmp = 3
     if tmp == 0:
         import codebreaker1
         import codemaker1
@@ -114,10 +114,31 @@ if __name__ == "__main__":
         import codebreaker2
         import codemaker2
         play(codemaker2, codebreaker2)
+
+    import time
+    start = time.time()
+
     if tmp == 3:
         import codebreaker3
         import codemaker2
         play(codemaker2, codebreaker3)
+    if tmp == 33:
+        import codebreaker3_v2
+        import codemaker2
+        play(codemaker2, codebreaker3_v2)
+    if tmp == 333:
+        import tmp
+        import codemaker2
+        play(codemaker2, tmp)
+
+
+
+    end = time.time()
+    print(end - start)
+
+
+
+
     if tmp == 4:
         import codemaker2
         play_human_against_codemaker(codemaker2)
