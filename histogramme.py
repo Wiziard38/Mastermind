@@ -37,7 +37,7 @@ def plot_histogram(n, codemaker, codebreaker):
     """ Fonction qui trace un histogramme répertoriant le nombre d'essais nécessaires
     pour que codemaker arrive à trouver la combinaison, sur n parties"""
     # On créé la liste du nombre d'essais pour les n parties : 
-    liste_essais = list(map(lambda x : recup_print(codemaker, codebreaker), np.linspace(0,1,n)))
+    liste_essais = list(map(lambda x : recup_print(codemaker, codebreaker), np.zeros(n)))
     
     # On trace l'histogramme :
     M = max(liste_essais)
@@ -61,7 +61,7 @@ def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     d'essais sur n parties nécessaires, pour que codemaker arrive à trouver la 
     combinaison pour deux versions de codebreakers."""
     # On créé la liste de la différence du nombre d'essais pour les n parties : 
-    liste_gains = list(map(lambda x : recup_print(codemaker, codebreaker_1) - recup_print(codemaker, codebreaker_2), np.linspace(0,1,n)))
+    liste_gains = list(map(lambda x : recup_print(codemaker, codebreaker_1) - recup_print(codemaker, codebreaker_2), np.zeros(n)))
        
     # On trace l'histogramme :
     (M,m) = (max(liste_gains),min(liste_gains))
@@ -79,7 +79,7 @@ def plot_difference_codemakers(n, codemaker_1, codemaker_2, codebreaker):
     d'essais sur n parties nécessaires, pour deux versions de codemakers différentes
     arrivent à trouver la combinaison."""
     # On créé la liste de la différence du nombre d'essais pour les n parties : 
-    liste_gains = list(map(lambda x : recup_print(codemaker_1, codebreaker) - recup_print(codemaker_2, codebreaker), np.linspace(0,1,n)))
+    liste_gains = list(map(lambda x : recup_print(codemaker_1, codebreaker) - recup_print(codemaker_2, codebreaker), np.zeros(n)))
     
     # On trace l'histogramme :
     (M,m) = (max(liste_gains),min(liste_gains))
@@ -118,7 +118,7 @@ if __name__ == "__main__":
     import codebreaker1
     import codebreaker2
     plot_histogram(100,codemaker1,codebreaker0)
-    plot_histogram(5000,codemaker1,codebreaker1)
+    #plot_histogram(5000,codemaker1,codebreaker1)
     #plot_histogram(10,codemaker2,codebreaker2)
     #plot_histogram(20,codemaker2,codebreaker2)
     #plot_proba_codebreaker0()
