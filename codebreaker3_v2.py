@@ -4,7 +4,7 @@
 # Import des librairies utilisées :
 import numpy as np
 import random
-# Imports des fichiers utilisés :
+# Import des fichiers utilisés :
 import common
 
 def init():
