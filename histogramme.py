@@ -20,9 +20,10 @@ def recup_print(codemaker, codebreaker):
     # récupérer le contenu du buffer :
     s = sys.stdout.getvalue()    
     # fermer le buffer :
-    sys.stdout.close()    
+    sys.stdout.close()   
     # rediriger stdout vers la sortie standart :
     sys.stdout = sys.__stdout__
+    
     
     # Maintenant on récupère la partie de l'affichage qui nous intéresse :
     s = s[-15:]
@@ -51,6 +52,7 @@ def plot_histogram(n, codemaker, codebreaker):
         plt.hist(liste_essais, range = (0,p+1), bins = int(p/32), density = True, label=str(codebreaker.__name__)) 
     if str(codebreaker.__name__) == 'codebreaker2':
         plt.hist(liste_essais, range = (0,m+1), bins = m+1, density = True, label=str(codebreaker.__name__)) 
+    
 
 def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     """ Fonction qui trace un histogramme répertoriant la différence du nombre 
@@ -108,11 +110,11 @@ if __name__ == "__main__":
     import codebreaker2
     #plot_histogram(100,codemaker1,codebreaker0)
     #plot_histogram(100,codemaker1,codebreaker1)
-    #plot_histogram(100,codemaker2,codebreaker2)
+    plot_histogram(10,codemaker2,codebreaker2)
     #plot_histogram(20,codemaker2,codebreaker2)
     #plot_proba_codebreaker0()
     #plot_proba_codebreaker1()
     #plot_difference_codebreakers(10, codemaker1, codebreaker0, codebreaker1)
-    plot_difference_codemakers(10, codemaker1, codemaker2, codebreaker1)
+    #plot_difference_codemakers(10, codemaker1, codemaker2, codebreaker1)
     plt.legend()
     plt.show()
