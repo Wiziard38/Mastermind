@@ -7,7 +7,7 @@ import sys
 import itertools
 import numpy as np
 
-tmp = 2 # PARTIE A SUPPRIMER APRES, C'EST JUSTE POUR QUE CE SOIT PLUS FACILE
+tmp = 0 # PARTIE A SUPPRIMER APRES, C'EST JUSTE POUR QUE CE SOIT PLUS FACILE
 if tmp == 0:
     LENGTH = 4
     COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
