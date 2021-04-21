@@ -4,7 +4,8 @@
 # Import des librairies utilisées :
 import numpy as np
 import random
-# Import des fichiers utilisés :
+import itertools
+# Imports des fichiers utilisés :
 import common
 
 def init():
@@ -19,8 +20,7 @@ def init():
     attempt = ''
 
     global tab_evals
-    size = len(common.COLORS)**common.LENGTH
-    tab_evals = np.array([[[-1,-1]]*size]*size)
+    tab_evals = array_evals()
 
 
 def attempt_to_number(attempt):
@@ -29,6 +29,19 @@ def attempt_to_number(attempt):
     for (i,v) in enumerate(attempt):
         number += (base**i) * common.COLORS.index(v)
     return number
+
+
+def array_evals():
+    global combinaisons
+    size = len(combinaisons)
+    matrix = np.array([[[-1,-1]]*size]*size)
+
+    for attempt_tmp, solution_tmp in itertools.product(combinaisons, combinaisons):
+        x = attempt_to_number(attempt_tmp)
+        y = attempt_to_number(solution_tmp)
+        matrix[x][y] = list(common.evaluation(attempt_tmp, solution_tmp))
+        #y = list(map(lambda x : list(common.evaluation('RRR', x)), list(combinaisons)))
+    return matrix
 
 
 def best_attempt():
@@ -51,14 +64,8 @@ def best_attempt():
 
             x = attempt_to_number(attempt_tmp)
             y = attempt_to_number(solution_tmp)
-            if x>y:
-                (x,y) = (y,x)
 
-            if tab_evals[x][y][0] == -1:
-                eval_tmp = common.evaluation(attempt_tmp, solution_tmp)
-                tab_evals[x][y] = list(eval_tmp)
-            else:
-                eval_tmp = tuple(tab_evals[x][y])
+            eval_tmp = tuple(tab_evals[x][y])
 
             common.maj_possibles(possibles_tmp, attempt_tmp, eval_tmp)
             nbr_possibles = len(possibles_tmp)

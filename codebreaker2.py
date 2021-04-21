@@ -8,25 +8,26 @@ import random
 import common
 
 def init():
-    """ Desc """
-    global possibles
+    """ Fonction qui initialise certains paramètres et variables utiles par la suite """
+    global possibles # Variable qui contiendra l'ensemble des combinaisons possibles
     possibles = set()
-    
-    global attempt
+    global attempt # Variable qui contiendra l'essai proposé, utilisé du coup au tour d'après
     attempt = ''
 
 def codebreaker(evaluation_p):
-    """ Desc """
+    """ Fonction qui va renvoyer un attempt au hasard, tant que celui-ci se trouve dans la liste des 
+    combinaisons encore possibles au vu des évaluations précedentes. C'est-à-dire, tant que cet attempt 
+    respecte toutes les précédentes évaluations. """
     global possibles
     global attempt
-    if evaluation_p == None:
-        attempt = ''.join(common.choices(common.COLORS, common.LENGTH))
+    if evaluation_p == None: # Correspond au premier essai
+        attempt = ''.join(common.choices(common.COLORS, common.LENGTH)) # on choisit un au hasard
         return attempt
-    elif possibles == set():
-        possibles = common.donner_possibles(attempt,evaluation_p)
+    elif possibles == set(): # Correspond au deuxième essai
+        possibles = common.donner_possibles(attempt,evaluation_p) # On choisit un au hasard parmis les possibles
         attempt = random.sample(possibles,1)[0]
         return attempt
-    else:
+    else: # Correspond à tous les autres essais
         common.maj_possibles(possibles, attempt, evaluation_p)
-        attempt = random.sample(possibles,1)[0]
+        attempt = random.sample(possibles,1)[0] # On choisit un au hasard parmis les possibles
         return attempt

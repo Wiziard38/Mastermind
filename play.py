@@ -72,11 +72,9 @@ def play_human_against_codebreaker(codebreaker):
 # Question 11: fonction play_log
 
 def play_log(codemaker, codebreaker, file):
-    """ Desc """
-    # on reprend la fonction play, on veut ajouter les attempts et les
-    #évaluations dans un fichier texte
-
-    #on crée un fichier texte log, que l'on ouvre en écriture et lecture (w+)
+    """ Fonction similaire à play, mais qui au lieu de print les différentes informations, cette fonction va
+    les stocker dans un fichier, avec le nom pris en paramètre. """
+    # On crée un fichier texte log, que l'on ouvre en écriture et lecture (w+)
     path = os.getcwd()
     log = open(path + "/logs/" + file + ".txt", "w+")
 
@@ -86,11 +84,11 @@ def play_log(codemaker, codebreaker, file):
     evaluation_p = None
     while True:
         attempt = codebreaker.codebreaker(evaluation_p)
-        # on écrit l'attempt dans le log puis on passe à la ligne suivante avec \n
+        # On écrit l'attempt dans le log puis on passe à la ligne suivante avec \n
         log.write(attempt+"\n")
 
         (red, white) = codemaker.codemaker(attempt)
-        #idem pour l'évaluation retournée par codemaker
+        # Idem pour l'évaluation retournée par codemaker
         log.write(str(red)+','+str(white)+'\n')
         n_tries += 1
 
@@ -101,7 +99,7 @@ def play_log(codemaker, codebreaker, file):
 
 
 if __name__ == "__main__":
-    tmp = 2
+    tmp = 3
     if tmp == 0:
         import codebreaker1
         import codemaker1
@@ -114,10 +112,24 @@ if __name__ == "__main__":
         import codebreaker2
         import codemaker2
         play(codemaker2, codebreaker2)
+
     if tmp == 3:
+        import time
+
+        start = time.time()
         import codebreaker3
         import codemaker2
         play(codemaker2, codebreaker3)
+        end = time.time()
+        print("Temps d'execution avec programmation dynamique : {}s. \n".format(end - start))
+
+        start = time.time()
+        import annexe
+        import codemaker2
+        play(codemaker2, annexe)
+        end = time.time()
+        print("Temps d'execution sans programmation dynamique : {}s. \n".format(end - start))
+
     if tmp == 4:
         import codemaker2
         play_human_against_codemaker(codemaker2)

@@ -5,19 +5,15 @@
 import common
 
 def init():
-    global liste
-    liste = []
+    """ Fonction qui initialise certains paramètres et variables utiles par la suite """
+    global tried_combinations
+    tried_combinations = []
 
 def codebreaker(evaluation_p):
-    """
-    L'argument evaluation_p est l'évaluation qu'on reçoit pour la dernière
-    combinaison qu'on a proposée (et vaut None si c'est le premier coup de la
-    partie). Cette version triviale n'utilise pas cette information, puisqu'
-    elle joue au hasard.
-    """
-    global liste
-    while True:
-        tmp = ''.join(common.choices(common.COLORS, common.LENGTH))
-        if tmp not in liste:
-            liste.append(tmp)
-            return tmp
+    """ Fonction qui renvoie une combinaison au hasard, tant qu'elle ne se trouve pas dans la liste des combinaisons déjà envoyées """
+    global tried_combinations
+    while True: # Boucle infinie
+        attempt = ''.join(common.choices(common.COLORS, common.LENGTH)) # Combinaison au hasard
+        if attempt not in tried_combinations:
+            tried_combinations.append(attempt)
+            return attempt
