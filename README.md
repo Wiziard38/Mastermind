@@ -4,8 +4,7 @@
 C'est un projet de deuxième année de prépa visant à construire un [mastermind](https://fr.wikipedia.org/wiki/Mastermind) fonctionnel, et notamment à développer des versions efficaces du codemaker et du codebreaker.
 Dans un premier temps nous avons juste coder des fonctions qui marchent, puis dans un deuxième temps il nous fallait aller plus loins. pour cela, on a implémenté une version du codemaker qui peut tricher, de manière subtile et invisible. D'autre part, on a implémenté une version du codebreaker qui avait pour objectif d'être le plus optimisée possible, dans le pire des cas.
 
-Le fonctionnement général est assez simple :
-**Codemaker** choisit une solution, et à tour de rôles, **codebreaker** va envoyer un essai. **Codemaker** va en retour renvoyer une évaluation de cet essai selon les règles du jeu mastermind.
+Le fonctionnement général est assez simple : **codemaker** choisit une solution, et à tour de rôles, **codebreaker** va envoyer un essai. **Codemaker** va en retour renvoyer une évaluation de cet essai selon les règles du jeu mastermind.
 On continue jusqu'à que **codebreaker** ai réussi à trouver la solution.
 
 ## Utilisation
@@ -39,8 +38,7 @@ Pour jouer, il suffit de lancer le programme ***play.py***. Vous pouvez changer 
 This is a second year project to build a functional [mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)), and in particular to develop efficient versions of the codemaker and the codebreaker.
 At first we just coded functions that would work, then in a second time we had to go further. For that, we implemented a version of codemaker that can cheat, in a subtle and invisible way. On the other hand, we implemented a version of the codebreaker which had for objective to be the most optimized possible, in the worst case.
 
-The general operation is quite simple:
-**Codebreaker** chooses a solution, and in turn, **codebreaker** will send a test. In return, **codemaker** will send back an evaluation of this trial according to the rules of the mastermind game.
+The general operation is quite simple: **codemaker** chooses a solution, and in turn, **codebreaker** will send a test. In return, **codemaker** will send back an evaluation of this trial according to the rules of the mastermind game.
 We continue until **codebreaker** has found the solution.
 
 ## Usage
