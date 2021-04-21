@@ -99,7 +99,7 @@ def play_log(codemaker, codebreaker, file):
 
 
 if __name__ == "__main__":
-    tmp = 333
+    tmp = 3
     if tmp == 0:
         import codebreaker1
         import codemaker1
@@ -113,24 +113,22 @@ if __name__ == "__main__":
         import codemaker2
         play(codemaker2, codebreaker2)
 
-    import time
-    start = time.time()
-
     if tmp == 3:
+        import time
+
+        start = time.time()
         import codebreaker3
         import codemaker2
         play(codemaker2, codebreaker3)
-    if tmp == 33:
-        import tmp
-        import codemaker2
-        play(codemaker2, tmp)
-    if tmp == 333:
+        end = time.time()
+        print("Temps d'execution avec programmation dynamique : {}s. \n".format(end - start))
+
+        start = time.time()
         import annexe
         import codemaker2
         play(codemaker2, annexe)
-
-    end = time.time()
-    print(end - start)
+        end = time.time()
+        print("Temps d'execution sans programmation dynamique : {}s. \n".format(end - start))
 
     if tmp == 4:
         import codemaker2

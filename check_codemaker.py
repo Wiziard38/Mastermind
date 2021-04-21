@@ -23,3 +23,5 @@ def check_codemaker(file):
         print('Le programme a triché de manière visible !')
     else:
         print("Tout va bien, le codemaker n'a pas triché (de manière visible).")
+
+check_codemaker('log')

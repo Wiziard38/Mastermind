@@ -32,7 +32,7 @@ def evaluation_v2(attempt, solution):
     return (red, white)
 
 
-## Programme du codemaker3 utilisant de la programmation dynamique
+## Programme du codemaker3 sans programmation dynamique   
 def init():
     """ Desc """
     global combinaisons

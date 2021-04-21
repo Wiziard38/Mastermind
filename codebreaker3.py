@@ -8,7 +8,6 @@ import itertools
 # Imports des fichiers utilisés :
 import common
 
-
 def init():
     """ Fonction qui initialise certains paramètres et variables utiles par la suite """
     global combinaisons # Variable qui contient toutes les combinaisons 
