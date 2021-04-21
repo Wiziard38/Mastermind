@@ -19,7 +19,7 @@ On continue jusqu'à que **codebreaker** ai réussi à trouver la solution.
 
 ## Utilisation
 > Tous les modules (codebreaker_ et codemaker_) doivent être importés avant !
-> Vous pouvez bien entendu modifier les numéros pour changer de version de codebreaker et codemaker (voir-ci dessous).
+> Vous pouvez bien entendu modifier les numéros pour changer de version de codebreaker et codemaker (voir plus bas).
 - Depuis ***play.py*** : 
     - Pour lancer une partie, lancez `play(codemaker2, codebreaker2)`
     - Pour jouer contre l'ordinateur, vous pouvez lancer `play_human_against_codebreaker(codebreaker2)` ou `play_human_against_codemaker(codemaker2)`
@@ -56,7 +56,7 @@ On continue jusqu'à que **codebreaker** ai réussi à trouver la solution.
 # Mastermind 
 
 ## Table of Contents
-* Introduction](#Introduction)
+* [Introduction](#Introduction)
 * [Requirements](#Requirements)
 * [Use](#Use)
 * [File List](#File-List)
