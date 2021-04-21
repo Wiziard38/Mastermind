@@ -71,7 +71,7 @@ def plot_difference_codebreakers(n, codemaker, codebreaker_1, codebreaker_2):
     # On affiche la moyenne du nombre d'essais par parties
     plt.title("Moyenne du gain en nombre d'essais dans une partie entre {} \n et {} contre {} : {}".format(codebreaker_1.__name__, codebreaker_2.__name__, codemaker.__name__, np.mean(liste_gains)))
     # On nomme les axes 
-    plt.xlabel("Nombre d'essais")
+    plt.xlabel("Différence en nombre d'essais")
     plt.ylabel("Nombre de parties, pondérées")
 
 def plot_difference_codemakers(n, codemaker_1, codemaker_2, codebreaker):
@@ -88,7 +88,7 @@ def plot_difference_codemakers(n, codemaker_1, codemaker_2, codebreaker):
     # On affiche la moyenne du nombre d'essais par parties
     plt.title("Moyenne du gain en nombre d'essais dans une partie entre {} \n et {} contre {} : {}".format(codemaker_1.__name__, codemaker_2.__name__, codebreaker.__name__, np.mean(liste_gains)))
     # On nomme les axes 
-    plt.xlabel("Nombre d'essais")
+    plt.xlabel("Différence en nombre d'essais")
     plt.ylabel("Nombre de parties, pondérées")
 
 def plot_proba_codebreaker0():
@@ -116,13 +116,13 @@ if __name__ == "__main__":
     import codebreaker0
     import codebreaker1
     import codebreaker2
-    plot_histogram(100,codemaker1,codebreaker0)
+    #plot_histogram(100,codemaker1,codebreaker0)
     #plot_histogram(5000,codemaker1,codebreaker1)
-    #plot_histogram(10,codemaker2,codebreaker2)
-    #plot_histogram(20,codemaker2,codebreaker2)
+    #plot_histogram(50,codemaker1,codebreaker2)
+    plot_histogram(10,codemaker2,codebreaker2)
     #plot_proba_codebreaker0()
     #plot_proba_codebreaker1()
     #plot_difference_codebreakers(10, codemaker1, codebreaker0, codebreaker1)
-    #plot_difference_codemakers(10, codemaker1, codemaker2, codebreaker1)
+    #plot_difference_codemakers(10, codemaker1, codemaker2, codebreaker2)
     plt.legend()
     plt.show()
