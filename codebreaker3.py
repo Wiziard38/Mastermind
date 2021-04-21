@@ -10,14 +10,12 @@ import common
 
 
 def init():
-    """ Desc """
-    global combinaisons
+    """ Fonction qui initialise certains paramètres et variables utiles par la suite """
+    global combinaisons # Variable qui contient toutes les combinaisons 
     combinaisons = common.creer_possibles()
-
-    global possibles
-    possibles = set()
-
-    global attempt
+    global possibles # Variable qui contiendra l'ensemble des combinaisons possibles
+    possibles = common.creer_possibles()
+    global attempt # Variable qui contiendra l'essai proposé, utilisé du coup au tour d'après
     attempt = ''
 
 
@@ -44,25 +42,17 @@ def best_attempt():
 
 
 def codebreaker(evaluation_p):
-    """ Desc """
+    """ Fonction qui va, à chaque tour, évaluer quel est l'attempt, parmis toutes les combinaisons, 
+    qui lui fournira le plus d'informations dans le pire des cas. """
     global possibles
     global attempt
     global combinaisons
-    if evaluation_p == None:
-        # Correspond au premier essai
-        possibles = common.creer_possibles()
-        attempt = ''
+    if evaluation_p == None: # Correspond au premier essai
         best_attempt()
         return attempt
-    elif possibles == set():
-        # Correspond au deuxième essai
-        possibles = common.donner_possibles(attempt,evaluation_p)
-        best_attempt()
-        return attempt
-    else:
-        # Correspond à tous les autres essais
+    else: # Correspond à tous les autres essais
         common.maj_possibles(possibles, attempt, evaluation_p)
-        if len(possibles) == 1:
+        if len(possibles) == 1: 
             return list(possibles)[0]
         best_attempt()
         return attempt

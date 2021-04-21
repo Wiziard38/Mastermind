@@ -4,9 +4,35 @@
 # Import des librairies utilisées :
 import numpy as np
 import random
+import sys
 # Imports des fichiers utilisés :
 import common
 
+
+## Fonction evaluation en utilisant des listes de compréhension
+def evaluation_v2(attempt, solution):
+    """Fonction qui évalue un essai en fonction de la solution de référence.
+    Renvoie un tuple composé du nombre de plots de la bonne couleur bien placés,
+    et du nombre de plots de la bonne couleur mais mals placés.
+    """
+    if len(solution) != len(attempt): # On vérifie que les deux chaînes ont la même longueur
+        sys.exit("Erreur : les deux combinaisons n'ont pas la même longueur")
+
+    (red, white) = (0,0) # Nombre de plots bien placés, mal placés
+    list_attempt = ['*' if attempt[i] == solution[i] else attempt[i] for i in range(common.LENGTH)]
+    # On créé une liste qui pour pour tout i allant de 0 à LENGTH vaut '*' si le plot était bien placé, et attempt[i] sinon
+    list_solution = ['#' if list_attempt[i] == '*' else solution[i] for i in range(common.LENGTH)]
+    # On créé de la même sorte une liste qui pour tout i allant de 0 à LENGTH vaut '#' si attempt[i] valait '*', et solution[i] sinon
+    red = list_attempt.count('*') # On compte le nombre de plots bien placés en relevant le nombre de '*'
+
+    for element in list_attempt:
+        if element != '*' and element in list_solution: # On prend en compte que les plots mal placés
+            white += 1
+            list_solution[list_solution.index(element)] = '#'
+    return (red, white)
+
+
+## Programme du codemaker3 utilisant de la programmation dynamique
 def init():
     """ Desc """
     global combinaisons

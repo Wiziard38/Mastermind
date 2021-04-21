@@ -18,9 +18,7 @@ def init():
 
 
 def evaluation_partielle(solution, attempt):
-    """
-    Cette fonction n'est pas correcte, elle n'implémente qu'une évaluation partielle
-    """
+    """ Cette fonction n'est pas correcte, elle n'implémente qu'une évaluation partielle  """
     if len(solution) != len(attempt):
         sys.exit("Erreur : les deux combinaisons n'ont pas la même longueur")
     red = 0
@@ -32,10 +30,7 @@ def evaluation_partielle(solution, attempt):
 
 
 def codemaker(attempt):
-    """
-    Cette fonction corrige la combinaison proposée par le codebreaker
-    (donnée en argument)
-    """
+    """ Cette fonction évalue la combinaison proposée par le codebreaker (donnée en argument) """
     global solution
     red, white = evaluation_partielle(solution, attempt)
     return(red, white)
