@@ -1,7 +1,7 @@
 # Mastermind - EN version below
 
 ## Introduction
-C'est un projet de deuxième année de prépa visant à construire un mastermind fonctionnel, et notamment à développer des versions efficaces du codemaker et du codebreaker.
+C'est un projet de deuxième année de prépa visant à construire un [mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)) fonctionnel, et notamment à développer des versions efficaces du codemaker et du codebreaker.
 Dans un premier temps nous avons juste coder des fonctions qui marchent, puis dans un deuxième temps il nous fallait aller plus loins. pour cela, on a implémenté une version du codemaker qui peut tricher, de manière subtile et invisible. D'autre part, on a implémenté une version du codebreaker qui avait pour objectif d'être le plus optimisée possible, dans le pire des cas.
 
 Le fonctionnement général est assez simple : **codemaker** choisit une solution, et à tour de rôles, **codebreaker** va envoyer un essai. **Codemaker** va en retour renvoyer une évaluation de cet essai selon les règles du jeu mastermind.
