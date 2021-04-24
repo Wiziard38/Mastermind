@@ -69,7 +69,6 @@ def play_human_against_codebreaker(codebreaker):
             print("Le codebreaker a trouvé {} en {} essais".format(attempt, n_tries))
             break
 
-# Question 11: fonction play_log
 
 def play_log(codemaker, codebreaker, file):
     """ Fonction similaire à play, mais qui au lieu de print les différentes informations, cette fonction va
@@ -97,46 +96,14 @@ def play_log(codemaker, codebreaker, file):
             break
     print("La partie a bien été enregistrée dans /logs/" + file + " !")
 
-
-if __name__ == "__main__":
-    tmp = 3
-    if tmp == 0:
-        import codebreaker1
-        import codemaker1
-        play(codemaker1, codebreaker1)
-    if tmp == 1:
-        import codebreaker2
-        import codemaker1
-        play(codemaker1, codebreaker2)
-    if tmp == 2:
-        import codebreaker2
-        import codemaker2
-        play(codemaker2, codebreaker2)
-
-    if tmp == 3:
-        import time
-
-        start = time.time()
-        import codebreaker3
-        import codemaker2
-        play(codemaker2, codebreaker3)
-        end = time.time()
-        print("Temps d'execution avec programmation dynamique : {}s. \n".format(end - start))
-
-        start = time.time()
-        import annexe
-        import codemaker2
-        play(codemaker2, annexe)
-        end = time.time()
-        print("Temps d'execution sans programmation dynamique : {}s. \n".format(end - start))
-
-    if tmp == 4:
-        import codemaker2
-        play_human_against_codemaker(codemaker2)
-    if tmp == 5:
-        import codebreaker3
-        play_human_against_codebreaker(codebreaker3)
-    if tmp == 6:
-        import codebreaker2
-        import codemaker2
-        play_log(codemaker2,codebreaker2,"log")
+## Exemples de parties, que vous pouvez décommentez, et bien entendu changer les versions de codemaker et codebreaker
+import codemaker1
+import codemaker2
+import codebreaker0
+import codebreaker1
+import codebreaker2
+import codebreaker3
+# play(codemaker1, codebreaker1)
+# play_human_against_codemaker(codemaker2)
+# play_human_against_codebreaker(codebreaker3)
+# play_log(codemaker2, codebreaker2, "log42")

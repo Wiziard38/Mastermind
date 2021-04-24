@@ -5,20 +5,11 @@
 import random
 import sys
 import itertools
-import numpy as np
 import collections
 
-tmp = 0 # PARTIE A SUPPRIMER APRES, C'EST JUSTE POUR QUE CE SOIT PLUS FACILE
-if tmp == 0:
-    LENGTH = 4
-    COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
-if tmp == 1:
-    LENGTH = 2
-    COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
-if tmp == 2:
-    LENGTH = 3
-    COLORS = ['R', 'V', 'B', 'J', 'N']
-
+# Nos varaibles utilisées pour toutes les parties :
+LENGTH = 4
+COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
 
 def choices(e, n):
     """ Renvoie une liste composée de n éléments tirés de e avec remise
@@ -48,7 +39,7 @@ def evaluation(attempt, solution):
             # On ajoute les couleurs au dictionnaire (si elle n'est pas présente, defaultdict initialise à 0 la valeur)
             dict[solution[i]] += 1
 
-    """ Ensuite on regarde le nomre de blancs, en étudiant les couleurs encore présentes dans la chaine 
+    """ Ensuite on regarde le nomre de blancs, en étudiant les couleurs encore présentes dans la chaine
     attempt par rapport à notre dictionnaire qui associe à chaque couleurs le nombre d'apparition. """
     white = 0 # Nombre de plots mal placés
     for element in attempt:
@@ -91,7 +82,7 @@ def maj_possibles(possibles, attempt, eval):
 
 def nombre_possibles(possibles_tmp, attempt_tmp, solution_tmp):
     """ Fonction qui nous renvoie le nombre de combinaisons qui sont encore possibles après un essais; c'est-à-dire
-    pour un attempt et une solution donnés. Cette fonction vient en réaliter simplement appeler les fonctions 
+    pour un attempt et une solution donnés. Cette fonction vient en réaliter simplement appeler les fonctions
     evaluation et maj_possibles à la suite. """
     eval_tmp = evaluation(attempt_tmp, solution_tmp)
     maj_possibles(possibles_tmp, attempt_tmp, eval_tmp)

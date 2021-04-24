@@ -2,16 +2,13 @@
 # -*- coding: utf-8 -*-
 
 # Import des librairies utilisées :
-import numpy
 import sys
 # Imports des fichiers utilisés :
 import common
 
 def init():
-    """
-    Cette fonction, appellée à chaque début de partie, initialise un certain nombre de
-    variables utilisées par le codemaker
-    """
+    """ Cette fonction, appellée à chaque début de partie, initialise un certain nombre de
+    variables utilisées par le codemaker. """
     global solution
     solution = ''.join(common.choices(common.COLORS, common.LENGTH))
     # Pour une version encore plus triviale, on pourrait aussi utiliser solution = ''.join([common.COLORS[0] for i in range(common.LENGTH)])

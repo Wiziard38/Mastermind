@@ -19,12 +19,12 @@ def test_evaluation():
         assert common.evaluation("RVRN","NNOO") == common.evaluation("NNOO", "RVRN")
 
 def test_creer_possibles():
-    """ Fonction test de la fonction creer_possibles du fichier common.py. """
+    """ Fonction test de la fonction creer_possibles du fichier common.py, pour un cas précis dont on connait le résultat. """
     assert len(common.creer_possibles()) == len(common.COLORS)**common.LENGTH
 
 
 def test_donner_possibles():
-    """ Fonction test de la fonction donner_possibles du fichier common.py. """
+    """ Fonction test de la fonction donner_possibles du fichier common.py, pour quelques cas précis dont on connait le résultat. """
     if len(common.COLORS) == 8 and common.LENGTH == 4:
         assert len(common.donner_possibles("RRRR", (0,0))) == 7**4 # Plus que 7 couleurs possibles
         assert len(common.donner_possibles("RVBG", (0,0))) == 4**4 # Plus que 4 couleurs possibles
@@ -35,7 +35,7 @@ def test_donner_possibles():
 
 
 def test_maj_possibles():
-    """ Fonction test de la fonction maj_possibles du fichier common.py. """
+    """ Fonction test de la fonction maj_possibles du fichier common.py, pour deux cas simplistes dont on connait le résultat. """
     if len(common.COLORS) == 8 and common.LENGTH == 4:
         possibles = {'RRRV','RRVR','RVRR','VRRR'}
         common.maj_possibles(possibles,'RRRV',(2,2))

@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Import des librairies utilisées :
-import random
 # Imports des fichiers utilisés :
 import common
 
@@ -20,8 +18,9 @@ def best_sol(attempt):
     global solution
     global possibles    
         
-    count = 0 # Compteur qui contiendra le nombre de possibles àpres mise-à-jour
-    for solution_tmp in (possibles-{attempt}): # On essaye toutes les solutions sauf celle proposée comme attempt
+    count = 0 # Compteur qui contiendra le nombre de possibles après mise-à-jour
+    for solution_tmp in (possibles-{attempt}): # On essaye toutes les solutions sauf celle proposée comme attempt, qui ne pourra jamais être la meilleure
+        # On compte le nombre de combinaisons possibles après mise à jour avec un attempt et solution donnés
         possibles_tmp = possibles.copy()
         nbr_possibles = common.nombre_possibles(possibles_tmp, attempt, solution_tmp)
         if nbr_possibles > count: # Si pour une solution donnée le nombre de possibles et plus grand que celui en mémoire :

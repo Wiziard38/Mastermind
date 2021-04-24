@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 # Import des librairies utilisées :
-import numpy
 import random
 # Imports des fichiers utilisés :
 import common
@@ -21,11 +20,11 @@ def codebreaker(evaluation_p):
     global possibles
     global attempt
     if evaluation_p == None: # Correspond au premier essai
-        attempt = ''.join(common.choices(common.COLORS, common.LENGTH)) # on choisit un au hasard
+        attempt = ''.join(common.choices(common.COLORS, common.LENGTH)) # On choisit un au hasard parmis toutes les combinaisons
         return attempt
     elif possibles == set(): # Correspond au deuxième essai
-        possibles = common.donner_possibles(attempt,evaluation_p) # On choisit un au hasard parmis les possibles
-        attempt = random.sample(possibles,1)[0]
+        possibles = common.donner_possibles(attempt,evaluation_p) 
+        attempt = random.sample(possibles,1)[0] # On choisit un au hasard parmis les possibles
         return attempt
     else: # Correspond à tous les autres essais
         common.maj_possibles(possibles, attempt, evaluation_p)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Imports des fichiers utilisés :
+# Imports des fichiers utilisés : 
 import common
 
 def init():

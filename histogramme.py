@@ -30,7 +30,7 @@ def recup_print(codemaker, codebreaker):
     for character in sortie:
         if character.isdigit(): # On regarde si chaque caractère est un nombre
             nombre += str(character)
-    return int(nombre)
+    return int(nombre) # On renvoie bien le nombre d'essais de notre partie donnée
 
 
 def plot_histogram(n, codemaker, codebreaker):
@@ -41,15 +41,14 @@ def plot_histogram(n, codemaker, codebreaker):
     
     # On trace l'histogramme :
     M = max(liste_essais)
+    # On différencie les cas car les histogrammes ne seront pas exacement les mêmes :
     if str(codebreaker.__name__) == 'codebreaker0':
         plt.hist(liste_essais, range = (0,M+1), bins = M+1, density = True, label=str(codebreaker.__name__))
     if str(codebreaker.__name__) == 'codebreaker1':
         p = (len(common.COLORS)**common.LENGTH)
         plt.hist(liste_essais, range = (0,p+1), bins = int(p/32), density = True, label=str(codebreaker.__name__)) 
-    if str(codebreaker.__name__) == 'codebreaker2':
+    if str(codebreaker.__name__) in ['codebreaker2','codebreaker3']:
         plt.hist(liste_essais, range = (0,M+1), bins = M+1, density = True, label=str(codebreaker.__name__))
-    if str(codebreaker.__name__) == 'codebreaker3':
-        plt.hist(liste_essais, range = (0,M+1), bins = M+1, density = True, label=str(codebreaker.__name__)) 
 
     # On affiche la moyenne du nombre d'essais par parties
     plt.title("Moyenne du nombre d'essais dans une partie entre {} \n et {} : {}".format(codemaker.__name__, codebreaker.__name__, np.mean(liste_essais)))
@@ -109,24 +108,19 @@ def plot_proba_codebreaker1():
     values = [1/p]*p
     plt.plot(x, values, label = "codebreaker1 théorique")
 
-
-# Fonctions de tracé    
-
-if __name__ == "__main__":
-    import codemaker1
-    import codemaker2
-    import codebreaker0
-    import codebreaker1
-    import codebreaker2
-    import codebreaker3
-    
-    #plot_histogram(1000,codemaker1,codebreaker3)
-    #plot_histogram(1000,codemaker1,codebreaker1)
-    #plot_histogram(1000,codemaker1,codebreaker2)
-    #plot_histogram(20,codemaker2,codebreaker2)
-    #plot_proba_codebreaker0()
-    #plot_proba_codebreaker1()
-    plot_difference_codebreakers(1000, codemaker2, codebreaker1, codebreaker3)
-    #plot_difference_codemakers(50, codemaker1, codemaker2, codebreaker3)
-    plt.legend()
-    plt.show()
+## Exemples de fonctions de tracé, que vous pouvez décommentez, et bien entendu changer les versions de codemaker et codebreaker
+# Pour faire tourner codebreaker3, il est impératif de changer dans 'common.py' la valeur de 'LENGTH' et/ou le nombre de couleurs de 'COLORS'
+import codemaker1
+import codemaker2
+import codebreaker0
+import codebreaker1
+import codebreaker2
+import codebreaker3
+# plot_histogram(1000,codemaker1,codebreaker1)
+# plot_histogram(200,codemaker2,codebreaker2)
+# plot_proba_codebreaker0()
+# plot_proba_codebreaker1()
+# plot_difference_codebreakers(1000, codemaker2, codebreaker1, codebreaker2)
+# plot_difference_codemakers(500, codemaker1, codemaker2, codebreaker2)
+plt.legend()
+plt.show()

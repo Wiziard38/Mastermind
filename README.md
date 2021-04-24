@@ -31,6 +31,7 @@ On continue jusqu'à que **codebreaker** ai réussi à trouver la solution.
     - Pour comparer deux versions de codemakers, lancez `plot_difference_codemakers(nombre_points, codemaker1, codemaker2, codebreaker1)`
     - Pour comparer deux versions de codebreakers, lancez `plot_difference_codebreakers(nombre_points, codemaker1, codebreaker0, codebreaker1)`
     - Vous pouvez ajouter les courbes théoriques `plot_proba_codebreaker0()` et `plot_proba_codebreaker1()`
+    - Après les différents tracés, il faut impérativement lancer `plt.legend()` et `plt.plot()`, sans quoi les histogrammes ne s'afficheront pas.
 
 
 ## Liste des fichiers
@@ -63,7 +64,7 @@ On continue jusqu'à que **codebreaker** ai réussi à trouver la solution.
 
 ## Introduction
 This is a second year project to build a functional [mastermind](https://fr.wikipedia.org/wiki/Mastermind), and in particular to develop efficient versions of the codemaker and the codebreaker.
-At first we just coded functions that work, then in a second time we had to go further. For that, we implemented a version of codemaker that can cheat, in a subtle and invisible way. On the other hand, we implemented a version of the codebreaker which had for objective to be the most optimized possible, in the worst case.
+At first we just coded functions that work, then in a second time we had to go further. For that, we implemented a version of codemaker that can cheat, in a subtle and invisible way. On the other hand, we implemented a version of the codebreaker which had for objective to be the most optimized possible, in the worst case. Be aware, code is in French.
 
 The general operation is quite simple: **codebreaker** chooses a solution, and in turn, **codebreaker** will send an attempt. In return, **codemaker** will send an evaluation of this trial according to the rules of the mastermind game.
 It will continue until **codebreaker** has found the solution.
@@ -86,7 +87,7 @@ It will continue until **codebreaker** has found the solution.
     - To compare two versions of codemakers, run `plot_difference_codemakers(number_points, codemaker1, codemaker2, codebreaker1)`
     - To compare two versions of codebreakers, run `plot_difference_codebreakers(number_points, codemaker1, codebreaker0, codebreaker1)`
     - You can add the theoretical curves `plot_proba_codebreaker0()` and `plot_proba_codebreaker1()`
-
+    - After the various plots, you must run `plt.legend()` and `plt.plot()`, otherwise the histograms will not be displayed.
 
 ## List of files
 - play.py : central program of the game, which plays a version of codemaker against a version of codebreaker. It is also possible to play the human against either codemaker or codebreaker. A sub-program inside allows to play two versions of codemaker and codebreaker but recording the logs of a game in a text file 
