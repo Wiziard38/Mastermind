@@ -27,9 +27,9 @@ On continue jusqu'à que **codebreaker** ai réussi à trouver la solution.
 - Depuis ***check_codemaker.py*** :
     - Pour vérifier à partir d'un fichier si le codemaker n'a pas tricher, lancez `check_codemaker(nom_fichier)`
 - Depuis ***histogramme.py*** :
-    - Pour observer juste un histogramme, lancez `plot_histogram(nombre_points,codemaker1,codebreaker1)`
-    - Pour comparer deux versions de codemakers, lancez `plot_difference_codemakers(nombre_points, codemaker1, codemaker2, codebreaker1)`
-    - Pour comparer deux versions de codebreakers, lancez `plot_difference_codebreakers(nombre_points, codemaker1, codebreaker0, codebreaker1)`
+    - Pour observer juste un histogramme, lancez `plot_histogram(nombre_parties,codemaker1,codebreaker1)`
+    - Pour comparer deux versions de codemakers, lancez `plot_difference_codemakers(nombre_parties, codemaker1, codemaker2, codebreaker1)`
+    - Pour comparer deux versions de codebreakers, lancez `plot_difference_codebreakers(nombre_parties, codemaker1, codebreaker0, codebreaker1)`
     - Vous pouvez ajouter les courbes théoriques `plot_proba_codebreaker0()` et `plot_proba_codebreaker1()`
     - Après les différents tracés, il faut impérativement lancer `plt.legend()` et `plt.plot()`, sans quoi les histogrammes ne s'afficheront pas.
 
@@ -83,9 +83,9 @@ It will continue until **codebreaker** has found the solution.
 - From ***check_codemaker.py*** :
     - To check from a file if the codemaker did not cheat, run `check_codemaker(file_name)`.
 - From ***histogram.py***:
-    - To observe just a histogram, run `plot_histogram(number_points,codemaker1,codebreaker1)`
-    - To compare two versions of codemakers, run `plot_difference_codemakers(number_points, codemaker1, codemaker2, codebreaker1)`
-    - To compare two versions of codebreakers, run `plot_difference_codebreakers(number_points, codemaker1, codebreaker0, codebreaker1)`
+    - To observe just a histogram, run `plot_histogram(number_parts,codemaker1,codebreaker1)`
+    - To compare two versions of codemakers, run `plot_difference_codemakers(number_parts, codemaker1, codemaker2, codebreaker1)`
+    - To compare two versions of codebreakers, run `plot_difference_codebreakers(number_parts, codemaker1, codebreaker0, codebreaker1)`
     - You can add the theoretical curves `plot_proba_codebreaker0()` and `plot_proba_codebreaker1()`
     - After the various plots, you must run `plt.legend()` and `plt.plot()`, otherwise the histograms will not be displayed.
 
