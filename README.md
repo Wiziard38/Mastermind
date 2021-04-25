@@ -101,8 +101,8 @@ It will continue until **codebreaker** has found the solution.
     - codemaker1.py : second version, functional which simply returns the evaluation associated to the codebreaker test
     - codemaker2.py : last version which is capable of cheating ; this version tries to choose a solution which returns the least possible information
 - common.py: file that includes various functions useful to codemaker and codebreaker. Contains : *choices*, *evaluation*, *creer_possibles*, *donner_possibles*, *maj_possibles* and *nombres_possibles*.
-- histogram.py: file that lists different plot functions to evaluate the performance of different versions of **codemaker** and **codebreaker**.
+- histogramme.py: file that lists different plot functions to evaluate the performance of different versions of **codemaker** and **codebreaker**.
 - logs : folder where are the games recorded by the second version of the play function in *play.py*.
 - check_codemaker.py : program that checks, for a game recorded in *logs*, if the codemaker has cheated in a visible way
-- appendix.py : file where a second version of the *evaluation* function of common.py is located, and another version of codemaker3.py, with an attempt to use dynamic programming. These are two programs stored for potential future improvement.
+- annexe.py : file where a second version of the *evaluation* function of common.py is located, and another version of codemaker3.py, with an attempt to use dynamic programming. These are two programs stored for potential future improvement.
 - tests.py : file that includes some tests associated with the functions of common.py
